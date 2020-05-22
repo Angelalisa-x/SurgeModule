@@ -1,0 +1,403 @@
+#!name=All Config By Angelalisa
+#!desc=All Config
+
+[Proxy]
+𝐑𝐞𝐣𝐞𝐜𝐭-𝐓𝐢𝐧𝐲𝐠𝐢𝐟 = reject-tinygif
+𝐑𝐞𝐣𝐞𝐜𝐭 = reject
+𝐃𝐢𝐫𝐞𝐜𝐭 = direct
+
+[Proxy Group]
+𝐀𝐝 𝐁𝐥𝐨𝐜𝐤 = 𝐑𝐞𝐣𝐞𝐜𝐭, 𝐑𝐞𝐣𝐞𝐜𝐭-𝐓𝐢𝐧𝐲𝐠𝐢𝐟, 𝐃𝐢𝐫𝐞𝐜𝐭
+
+[Rule]
+# > Reject
+DOMAIN-SUFFIX, cc.m.jd.com, DIRECT
+DOMAIN-SUFFIX, *.360buyimg.com, DIRECT
+
+#whitelist
+DOMAIN-SET,https://raw.githubusercontent.com/WildcardTech/Filter-Domain-List/master/whitelist.txt,DIRECT
+DOMAIN-SET,https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/whitelist/master/domains.list,DIRECT
+
+#maicoo
+DOMAIN-SET,https://raw.githubusercontent.com/maicoo-l/Surge/master/rules/Filters.txt,REJECT
+
+#anti
+DOMAIN-SET,https://gitee.com/privacy-protection-tools/anti-ad/raw/master/domains.txt,REJECT
+
+#NobyDa
+DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block.txt,REJECT
+RULE-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block_Add.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block_Plus.txt,REJECT
+
+#nzw9314
+RULE-SET,https://raw.githubusercontent.com/eHpo1/Rules/master/Surge4/Ruleset/Liby.list,REJECT
+RULE-SET,https://raw.githubusercontent.com/eHpo1/Rules/master/Surge4/Ruleset/Tide.list,REJECT
+RULE-SET,https://raw.githubusercontent.com/NobyDa/Script/master/Surge/AdRuleRegex.list,REJECT
+
+# BlockOTA
+RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/BlockOTA.list,REJECT
+
+# Antirevoke
+RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/Antirevoke.list,REJECT
+
+#angelalisa
+DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/Surge/master/ADxiaoyezi.txt,REJECT
+
+# > 京东  去启动广告
+URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
+# > YouTube 去片头广告
+URL-REGEX,^https?:\/\/[\w-]+\.googlevideo\.com\/.+&(oad|ctier),REJECT-TINYGIF
+# > 知乎 去广告
+USER-AGENT,AVOS*,REJECT-TINYGIF
+URL-REGEX,https://www.zhihu.com/api/v4/mcn/,REJECT
+URL-REGEX,https://api.zhihu.com/(ab|adx|xen|club|fringe|zst|commercial|ad-style-service|market/popover|search/(top|tab|preset)|.*(guide|recommendations|extended|featured-comment-ad)),REJECT
+AND,((USER-AGENT,osee2*), (NOT,((DOMAIN-SUFFIX,zhihu.com))), (NOT,((DOMAIN-SUFFIX,zhimg.com)))),REJECT-TINYGIF
+# > 优酷 去广告
+URL-REGEX,^http:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/,REJECT-TINYGIF
+
+[Host]
+*.nextdns.io = server:8.8.8.8
+# CUSTOM DNS
+*.google.com = script:Dnspod
+*.apple.com = script:Dnspod
+ip6-localhost = ::1
+ip6-loopback = ::1
+*.taobao.com = server:223.5.5.5
+*.tmall.com = server:223.5.5.5
+*.jd.com = server:119.28.28.28
+*.qq.com = server:119.28.28.28
+*.tencent.com = server:119.28.28.28
+*.alicdn.com = server:223.5.5.5
+*.aliyun.com = server:223.5.5.5
+*.weixin.com = server:119.28.28.28
+*.163.com = server:119.29.29.29
+*.126.com = server:119.29.29.29
+*.126.net = server:119.29.29.29
+*.127.net = server:119.29.29.29
+*.netease.com = server:119.29.29.29
+*.mi.com = server:119.29.29.29
+*.xiaomi.com = server:119.29.29.29
+*.bilibili.com = server:119.29.29.29
+cdn.pcbeta.attachment.inimc.com = 120.52.19.113
+cdn.pcbeta.css.inimc.com = 120.52.19.113
+cdn.pcbeta.static.inimc.com = 120.52.19.113
+*.meituan.com = server:223.5.5.5
+*.iqiyi.com = server:223.6.6.6
+*.360buyimg.com = server:119.28.28.28
+*.msstatic.com = server:223.6.6.6
+*.douyucdn.cn = server:223.6.6.6
+*.douyu.com = server:223.6.6.6
+*hl.snssdk.com = server:223.6.6.6
+live1.ksapisrv.com = server:223.6.6.6
+live1.gifshow.com = server:223.6.6.6
+live.ksapisrv.com = server:223.6.6.6
+*.manmanbuy.com = server:223.6.6.6
+s2.ax1x.com = server:223.6.6.6
+
+[URL Rewrite]
+
+# > TikTok 解锁
+(?<=_region=)CN(?=&) JP 307
+(?<=&app_version=)16..(?=.?.?&) 1 307
+(?<=\?version_code=)16..(?=.?.?&) 1 307 
+# > 抖音 去广告&水印
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/feed\/ https://aweme.snssdk.com/aweme/v1/feed/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/aweme\/post\/ https://aweme.snssdk.com/aweme/v1/aweme/post/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/follow\/feed\/ https://aweme.snssdk.com/aweme/v1/follow/feed/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/nearby\/feed\/ https://aweme.snssdk.com/aweme/v1/nearby/feed/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/search\/item\/ https://aweme.snssdk.com/aweme/v1/search/item/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/general\/search\/single\/ https://aweme.snssdk.com/aweme/v1/general/search/single/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/hot/search\/video\/list\/ https://aweme.snssdk.com/aweme/v1/hot/search/video/list/ header
+
+# Redirect Google Search Service
+^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
+
+# Redirect HTTP to HTTPS
+^https?:\/\/(www.)?taobao\.com\/ https://taobao.com/ 302
+^https?:\/\/(www.)?jd\.com\/ https://www.jd.com/ 302
+^https?:\/\/(www.)?mi\.com\/ https://www.mi.com/ 302
+^https?:\/\/you\.163\.com\/ https://you.163.com/ 302
+^https?:\/\/(www.)?suning\.com/ https://suning.com/ 302
+^https?:\/\/(www.)?yhd\.com https://yhd.com/ 302
+
+# Redirect False to True
+# > IGN China to IGN Global
+^https?:\/\/(www.)?ign\.xn—fiqs8s\/ http://cn.ign.com/ccpref/us 302
+# > Fake Website Made By C&J Marketing
+^https?:\/\/(www.)?abbyychina\.com\/ https://www.abbyy.cn/ 302
+^https?:\/\/(www.)?bartender\.cc\/ https://www.macbartender.com/ 302
+^https?:\/\/(www.)?(betterzipcn|betterzip)\.(com|net)\/ https://macitbetter.com/ 302
+^https?:\/\/(www.)?beyondcompare\.cc\/ https://www.scootersoftware.com/ 302
+^https?:\/\/(www.)?bingdianhuanyuan\.cn\/ https://www.faronics.com/zh-hans/products/deep-freeze 302
+^https?:\/\/(www.)?chemdraw\.com\.cn\/ https://www.perkinelmer.com.cn/ 302
+^https?:\/\/(www.)?codesoftchina\.com\/ https://www.teklynx.com/ 302
+^https?:\/\/(www.)?coreldrawchina\.com\/ https://www.coreldraw.com/cn/ 302
+^https?:\/\/(www.)?crossoverchina\.com\/ https://www.codeweavers.com/ 302
+^https?:\/\/(www.)?dongmansoft\.com\/ https://www.udongman.cn/ 302
+^https?:\/\/(www.)?earmasterchina\.cn\/ https://www.earmaster.com/ 302
+^https?:\/\/(www.)?easyrecoverychina\.com\/ https://www.ontrack.com/ 302
+^https?:\/\/(www.)?ediuschina\.com\/ https://www.grassvalley.com/ 302
+^https?:\/\/(www.)?flstudiochina\.com\/ https://www.image-line.com/ 302
+^https?:\/\/(www.)?formysql\.com\/ https://www.navicat.com.cn/ 302
+^https?:\/\/(www.)?guitarpro\.cc\/ https://www.guitar-pro.com/ 302
+^https?:\/\/(www.)?huishenghuiying\.com\.cn\/ https://www.coreldraw.com/cn/ 302
+^https?:\/\/hypersnap\.mairuan\.com\/ https://www.hyperionics.com/ 302
+^https?:\/\/(www.)?iconworkshop\.cn\/ https://www.axialis.com/ 302
+^https?:\/\/(www.)?imindmap\.cc\/ https://www.ayoa.com/previously-imindmap/ 302
+^https?:\/\/(www.)?jihehuaban\.com\.cn\/ https://www.chartwellyorke.com/sketchpad/x24795.html
+^https?:\/\/hypersnap\.mairuan\.com\/ https://www.keyshot.com/ 302
+^https?:\/\/(www.)?kingdeecn\.cn\/ http://www.kingdee.com/ 302
+^https?:\/\/(www.)?logoshejishi\.com https://www.sothink.com/product/logo-design-software/ 302
+^https?:\/\/logoshejishi\.mairuan\.com\/ https://www.sothink.com/product/logo-design-software/ 302
+^https?:\/\/(www.)?luping\.net\.cn\/ https://www.techsmith.com/ 302
+^https?:\/\/(www.)?mathtype\.cn\/ https://www.dessci.com/ 302
+^https?:\/\/(www.)?mindmanager\.(cc|cn)\/ https://www.mindjet.com/cn/ 302
+^https?:\/\/(www.)?mindmapper\.cc\/ https://www.mindmapper.com/ 302
+^https?:\/\/(www.)?mycleanmymac\.com\/ https://macpaw.com/ 302
+^https?:\/\/(www.)?nicelabel\.cc\/ https://www.nicelabel.com/zh/ 302
+^https?:\/\/(www.)?ntfsformac\.cc\/ https://www.tuxera.com/products/tuxera-ntfs-for-mac-cn/ 302
+^https?:\/\/(www.)?ntfsformac\.cn\/ https://china.paragon-software.com/home-mac/ntfs-for-mac/ 302
+^https?:\/\/(www.)?overturechina\.com\/ https://sonicscores.com/ 302
+^https?:\/\/(www.)?passwordrecovery\.cn\/ https://cn.elcomsoft.com/aopr.html 302
+^https?:\/\/(www.)?pdfexpert\.cc\/ https://pdfexpert.com/zh 302
+^https?:\/\/(www.)?photozoomchina\.com\/ https://www.benvista.com/ 302
+^https?:\/\/(www.)?shankejingling\.com\/ https://www.sothink.com/product/flashdecompiler/ 302
+^https?:\/\/cn\.ultraiso\.net\/ https://cn.ezbsystems.com/ultraiso/ 302
+^https?:\/\/(www.)?vegaschina\.cn\/ https://www.vegascreativesoftware.com/ 302
+^https?:\/\/(www.)?xshellcn\.com\/ https://www.netsarang.com/zh/xshell/ 302
+^https?:\/\/(www.)?yuanchengxiezuo\.com\/ https://www.teamviewer.com/ 302
+^https?:\/\/(www.)?zbrushcn.com/ https://pixologic.com/ 302
+# Remove Super's Ad (By Liquor030)
+app_name=super&([\S]*)aid=\d+ app_name=super_pro&$1aid=1412 header
+
+# Wikipedia
+^https://zh.(m.)?wikipedia.org/zh(-\w*)?(?=/) https://www.wikiwand.com/zh$2 302
+^https://(\w*).(m.)?wikipedia.org/wiki https://www.wikiwand.com/$1 302
+
+# >> 闲鱼
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome\/ - reject
+
+# >> 高德地图
+^https?:\/\/m\d\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\/ - reject
+# >> 优酷
+^https?:\/\/.+\.mp4\?ccode=0902 - reject
+^https?:\/\/.+\.mp4\?sid= - reject
+^https?:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/.+\.mp4\?sid= - reject
+
+# >> 百度网盘
+^https?:\/\/pan\.baidu\.com\/rest\/2.0\/pcs\/adx - reject
+^https?:\/\/pan\.baidu\.com\/act\/api\/activityentry - reject
+^https?:\/\/issuecdn\.baidupcs\.com\/issue\/netdisk\/guanggao\/ - reject
+# >> 百度贴吧
+^https?:\/\/c\.tieba\.baidu\.com\/c\/s\/splashSchedule - reject
+^https?:\/\/c\.tieba\.baidu\.com\/c\/f\/forum\/getAdInfo - reject
+^https?:\/\/c\.tieba\.baidu\.com\/\w+\/\w+\/(sync|newRnSync|mlog) - reject
+
+# >> 爱奇艺
+^https?:\/\/iface\.iqiyi\.com\/api\/getNewAdInfo - reject
+^https?:\/\/.+\/(mixer|track2)\? - reject
+^https?:\/\/act\.vip\.iqiyi\.com\/interact\/api\/show.do - reject
+^https?:\/\/act\.vip\.iqiyi\.com\/interact\/api\/v2\/show - reject
+
+# > 斗鱼
+^https?:\/\/rtbapi\.douyucdn\.cn\/japi\/sign\/app\/getinfo - reject
+
+# > 京东
+^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/base\/na\/m\/adInfo - reject
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/na\/m\/getLoadingPicture - reject
+
+# > 美团
+^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/.+\.(gif|jpg|jpg\.webp)$ - reject
+^https?:\/\/p\d\.meituan\.net\/wmbanner\/[A-Za-z0-9]+\.jpg - reject
+^https?:\/\/p\d\.meituan\.net\/movie\/[A-Za-z0-9]+\.jpg\?may_covertWebp - reject
+^https?:\/\/s3plus\.meituan\.net\/.+\/linglong\/.+\.(gif|jpg|mp4) - reject
+
+# > 什么值得买
+^https?:\/\/api\.smzdm\.com\/v\d\/util\/loading - reject
+^https?:\/\/app-api\.smzdm\.com\/util\/loading - reject
+^https?:\/\/s\d\.zdmimg\.com\/www\/api\/v\d\/api\/thirdAd\.php - reject
+
+# >> 腾讯视频
+^https?:\/\/btrace.qq.com - reject
+^https?:\/\/vv\.video\.qq\.com\/getvmind\? - reject
+# ^https?:\/\/.+\.mp4.+&sdtfrom=v3004 - reject
+^https?:\/\/((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\/.+\.tc\.qq\.com\/.+p201\.1\.mp4\? - reject
+# >> 腾讯新闻
+^https?:\/\/r\.inews\.qq\.com\/(adsBlacklist|getFullScreenPic|getQQNewsRemoteConfig) - reject
+# >> 腾讯体育
+^https?:\/\/news\.ssp\.qq\.com\/app - reject
+# >> 微信
+^https?:\/\/mp\.weixin\.qq\.com\/mp\/(ad_|advertisement|getappmsgad) - reject
+
+# >> 网易云音乐
+^https?:\/\/.+\/eapi\/(ad|log)\/ - reject
+
+# > 知乎
+^https?:\/\/www\.zhihu\.com\/api\/v4\/community-ad\/ - reject
+^https?:\/\/api\.zhihu\.com\/(launch|real_time) - reject
+^https?:\/\/api\.zhihu\.com\/commercial_api\/(launch|real_time) - reject
+^https?:\/\/api\.zhihu\.com\/fringe\/ad - reject
+^https?:\/\/api\.zhihu\.com\/ad- - reject
+
+# > 字节跳动
+^https?:\/\/.+\.pstatp\.com\/img\/ad - reject
+^https?:\/\/.+\.(amemv|musical|snssdk|tiktokv)\.(com|ly)\/(api|motor)\/ad\/ - reject
+^https?:\/\/dsp\.toutiao\.com\/api\/xunfei\/ads\/ - reject
+^https?:\/\/.+\.snssdk\.com\/motor\/operation\/activity\/display\/config\/V2\/ - reject
+
+# > 中国银行
+^https?:\/\/mlife\.jf365\.boc\.cn\/AppPrj\/FirstPic\.do\? - reject
+
+# > 中国招商银行
+^https?:\/\/mlife\.cmbchina\.com\/ClientFaceService\/preCacheAdvertise\.json - reject
+^https?:\/\/mlife\.cmbchina\.com\/ClientFaceService\/getAdvertisement\.json - reject
+^https?:\/\/pic1cdn\.cmbchina\.com\/appinitads\/ - reject
+
+# > 中国联通
+^https?:\/\/m\.client\.10010\.com\/mobileService\/customer\/accountListData\.htm - reject
+^https?:\/\/m\.client\.10010\.com\/uniAdmsInterface\/getWelcomeAd - reject
+
+
+[Header Rewrite]
+# > 腾讯
+^*.qpic.cn header-replace User-Agent WeChat/6.5.22.32 CFNetwork/889.9 Darwin/17.2.0
+^*.qpic.cn header-del Referer
+# > 网易
+^*.ph.126.net header-del Referer
+# > 知乎
+^*.zhimg.com header-del Referer
+^https?+:\/\/www\.zhihu\.com\/question header-replace User-Agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Safari/605.1.15"
+# > 中文业界资讯站
+^*.cnbetacdn.com header-del Referer
+# > 百度
+^*.bdimg.com header-del Referer
+^https?://zhidao\.baidu\.com header-replace User-Agent Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15
+
+
+[Script]
+# > 京东比价
+jd_price.js = type=http-response,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js,script-update-interval=0
+
+# > 淘宝比价
+# 不生效或失效的需要卸载 tb 重装，注意不开脚本进 tb 会失效
+tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-request,pattern=^http://.+/amdc/mobileDispatch
+tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-response,pattern=^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail
+
+# > 微博去广告
+wb_launch.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js,type=http-response,pattern=^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua)
+wb_ad.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?://m?api\.weibo\.c(n|om)/2/(statuses/(unread|extend|positives/get|(friends|video)(/|_)(mix)?timeline)|stories/(video_stream|home_list)|(groups|fangle)/timeline|profile/statuses|comments/build_comments|photo/recommend_list|service/picfeed|searchall|cardlist|page|!/photos/pic_recommend_status|video/tiny_stream_video_list),script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_ad.js
+
+# > 抖音 & TikTok Remove Ad & Logo
+douyin_post = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme/v1/aweme\/post\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_feed = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/feed\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_follow = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/follow\/feed\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_naerby = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/nearby\/feed\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_item = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/search\/item\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_search = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/general\/search\/single\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_hot = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/hot\/search\/video\/list\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+
+# > 微信公众号
+WeChat.js = script-path=https://Choler.github.io/Surge/Script/WeChat.js,type=http-request,pattern=^https://mp\.weixin\.qq\.com/mp/getappmsgad
+
+# > YouTube
+YouTube.js = script-path=https://Choler.github.io/Surge/Script/YouTube.js,type=http-request,pattern=^https://[\s\S]*\.googlevideo\.com/.*&(oad|ctier)
+
+# > 知乎 去广告
+zhihu people = type=http-response,requires-body=1,max-size=0,pattern=https://api.zhihu.com/people/,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20people.js
+zhihu feed = type=http-response,requires-body=1,max-size=0,pattern=https://api.zhihu.com/moments/recommend,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20feed.js
+zhihu recommend = type=http-response,requires-body=1,max-size=0,pattern=https://api.zhihu.com/topstory/recommend,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20recommend.js
+zhihu answer = type=http-response,requires-body=1,max-size=0,pattern=https://api.zhihu.com/v4/questions,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20answer.js
+
+# > 腾讯新闻 去广告
+QQNews.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/QQNews.js,type=http-response,pattern=^https://r\.inews\.qq.com\/get(QQNewsUnreadList|RecommendList)
+
+# > 皮皮虾  Remove Ad & Logo
+Super.js = requires-body=1,max-size=-1,script-path=https://raw.githubusercontent.com/Liquor030/Sub_Ruleset/master/Script/Super.js,type=http-response,pattern=^https?://.*\.snssdk\.com/bds/(feed/stream|comment/cell_reply|cell/cell_comment|cell/detail|ward/list|user/favorite|user/cell_coment|user/cell_userfeed|user/publish_list)
+
+# 彩云天气 Vip
+彩云天气 = type=http-response,pattern=https://biz.caiyunapp.com/v2/user\?app_name=weather,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/Surge/master/Script/caiyun.js
+
+# Keep 解锁私人课程和动作库 (QX存在bug 该脚本可能无法生效)
+Keep.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Keep.js,type=http-response,pattern=^https:\/\/api\.gotokeep\.com\/(.+\/subject|.+\/dynamic)
+
+# 轻颜相机 & ulike & 蒸汽波相机(vaporcam)三合一 解锁VIP(By @s y & Alex0510)
+qyxj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/qyxj.js,type=http-response,pattern=^https:\/\/commerce-.*api\.faceu\.mobi\/commerce\/v1\/subscription\/user_info
+
+# > 有道云笔记 (By Alex0510)
+ydybj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/ydybj.js,type=http-response,pattern=https://note.youdao.com/yws/(mapi/payment|api/self)
+
+# > 彩云小译 (By Alex0510)
+cyxy.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/cyxy.js,type=http-response,pattern=^https:\/\/api\.interpreter\.caiyunai\.com\/v1\/user
+
+# > 美颜相机一次性解锁内购（by黑黑酱）
+myxj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/myxj.js,type=http-response,pattern=^https:\/\/api\.meiyan\.com\/iap\/verify\.json
+
+
+//以下签到脚本
+# > 一言
+Calendar.js = script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Meeta/Surge/Scripting/Calendar.js,tag=一言+历史上的今天,type=cron,cronexp=0 0 8 * * *
+
+# > 每日一句+ 蚂蚁森林收能量
+cron_daily.js = script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/yichahucha/cron_daily.js,tag=每日一句+蚂蚁森林收能量,type=cron,cronexp=0 30 7 * * *
+
+# > 倒数日
+# 需要自己修改节日
+daysmatter.js = script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/daysmatter.js,tag=倒数日,type=cron,cronexp=0 0 8 * * *
+
+# > 京东
+JD_DailyBonus.js = type=cron,cronexp=0 0 0/6 * * *,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js,script-update-interval=0
+
+# 电信营业厅
+# 打开 APP 手动签到一次: 访问下右下角 `我` > `签到` (头像下面)
+10000.js = type=cron,cronexp=20 0 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/10000/10000.js,script-update-interval=0
+
+# 网易云音乐
+# 浏览器访问并登录: https://music.163.com/m/login
+neteasemusic.js = type=cron,cronexp=0 1 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/neteasemusic/quanx/neteasemusic.js,script-update-interval=0
+
+# 什么值得买
+# 浏览器访问并登录: https://zhiyou.smzdm.com/user/login
+smzdm.js = type=cron,cronexp=25 1 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/quanx/smzdm.js,script-update-interval=0
+
+# 中国联通
+# 1打开 APP , 进入签到页面, 系统提示: `获取刷新链接: 成功`,然后手动签到 1 次
+# 2首页>天天抽奖, 系统提示 `2` 次: `获取Cookie: 成功 (登录抽奖)` 和 `获取Cookie: 成功 (抽奖次数)`
+10010.js = type=cron,cronexp=20 2 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/10010/10010.js,script-update-interval=0
+
+# 美团
+# 打开 APP , 然后手动签到 1 次, (`首页` > `红包签到`)
+meituan.js = type=cron,cronexp=40 2 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/meituan/meituan.js,script-update-interval=0
+
+# 饿了么   (By @syzzzf)
+# 打开 APP, 访问下`我的`>`签到领红包`(左上角)
+elemSign.js = type=cron,cronexp=35 4 0/12 * * *,script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemSign.js,script-update-interval=0
+
+# 携程旅行  (By @barrymchen)
+# 打开App 点击”我的“,然后点击”我的积分“,再点击下面的”签到.任务“即可
+ctrip.js = type=cron,cronexp=45 4 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/ctrip.js,script-update-interval=0
+
+# 京东到家 (@barrymchen, @GideonSenku & @Macsuny)
+# APP登陆账号后，点击主页’签到‘,即可
+jddj.js = type=cron,cronexp=25 5 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jddj.js,script-update-interval=0
+
+# 快手极速版 (By @Macsuny)
+# APP登陆账号后，点击’钱包‘
+kuaishou.js = type=cron,cronexp=40 5 0/8 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/kuaishou.js,script-update-interval=0
+
+ 趣头条
+# 打开 APP 进入签到:  `右上角` > `签到`
+# 阅读篇数获取Cookie:`小视频`中播放一段时间视频即可获取,具体的阅读篇数奖励请到应用内手动点击
+# 首页金币奖励:此Cookie在首页的推荐中随机出现,随机获取,并不一定会出现。
+趣头条 = type=cron,cronexp=20 4 * * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/qtt/qtt.js,script-update-interval=0
+
+# > 中青看点极速版 (By @Macsuny)
+# 1.进入app，签到一次,即可获取Cookie. 
+# 2.阅读一篇文章，获取阅读请求body，
+# 3.在阅读文章最下面有个惊喜红包，点击获取惊喜红包请求
+# 4.激励视频获取方法: 关闭vpn，进入任务中心=>抽奖赚点击下面第一个宝箱，出现视频广告页面，然后打开vpn，等待视频播放完毕，点击点我继续领青豆，再重复一次上面操作，获取激励视频请求的body
+中青看点极速版 = type=cron,cronexp=35 5 0/6 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js,script-update-interval=0
+
+
+[MITM]
+hostname = %APPEND% *.googlevideo.com, trade-acs.m.taobao.com, bea.sportq.com, api.meiyan.com, api.gao1gps.cn, avoscloud.com, app.flashdown365.com, m.samh.xndm.tech, mob2015.kekenet.com, api.m.jd.com, ios.prod.ftl.netflix.com, vipapi.jxedt.com, api.interpreter.caiyunai.com, pocketlists.com, book.haitunwallet.com, mubu.com, app.xunjiepdf.com, miaow.yiyongcad.com, api.lennou.com, api.gkocr.com, vira.llsapp.com, commerce-.*api.faceu.mobi, commerce-api.faceu.mobi, pan.baidu.com, api.revenuecat.com, api.rr.tv, editorapi.115.com, api.lakecoloring.com, ctrl.playcvn.com, dict.eudic.net, m.client.10010.com, api.wakamoment.ga, *.bh3.com, api.diyidan.net, api.flexibits.com, api.jiaonizuocai.com, api.sololearn.com, tncj.hortorgames.com, m.pearkin.com, claritywallpaper.com, bookapi.ihuman.com, rest.zhibo.tv, note.youdao.com, billing.peakcloud.org, api.ithome.com, www.xmind.cn, *.arten.cn, api.weiqire.com, api.shimo.im, pay.wecut.com, *.videostarapp.com, app.api.versa-ai.com, *.bjxkhc.com, api.591master.com, jdytv.cn, user.shywck.com, *.xunjie*.com, api.psy-1.com, snailsleep.net, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, mp.weixin.qq.com, api.zhihu.com, www.zhihu.com, app.bilibili.com, api.bilibili.com, api.live.bilibili.com, *.amemv.com, aweme*.snssdk.com, *.kuwo.cn, vip1.kuwo.cn, *.xiaoxiao*.com, api*.tiktokv.com, *.musical.ly, p.du.163.com, getuserinfo.321mh.com, getuserinfo-globalapi.zymk.cn, ios.fuliapps.com, vsco.co, api.vnision.com, *.my10api.com, sp.kaola.com, r.inews.qq.com, apple.fuliapps.com, newdrugs.dxy.cn, app101.avictown.cc, api.hlo.xyz, api.ijo.xyz, www.luqijianggushi.com, account.wps.*, u.kanghuayun.com, api.gyrosco.pe, api1.dobenge.cn, api.mvmtv.com, mitaoapp.yeduapp.com, origin-prod-phoenix.jibjab.com, www.3ivf.com, pay.guoing.com, api.termius.com, api.bjxkhc.com, viva.v21xy.com, biz.caiyunapp.com, api.gotokeep.com, ap*.intsig.net, mp.bybutter.com, api.vuevideo.net, api.picsart.c*, api.meiease.c*, splice.oracle.*.com, api.gamer.com.tw, ios.xiangjiaoapps.com, apple.xiangjiaoapps.com, api.gamer.com.tw, *.xiangxiangapps.com, avatar-nct.nixcdn.com, spclient.wg.spotify.com, oa.zalo.me, origin-prod-phoenix.jibjab.com, api.meiease.c*, api.unfold.app, viva-asia1.vvbrd.com, graph.nhaccuatui.com, api.memrise.com , api.sync.me, pool.elsanow.io, lambda.us-east-1.amazonaws.com, api.mondlylanguages.com, api.busuu.com, owa.videoshowiosglobalserver.com:0, accounts.elevateapp.net, purchases.ws.pho.to, api-intl.mr.meitu.com, bmall.camera360.com, api.tv.zing.vn, api.calm.com, www.calm.com, api.global.mp3.zing.vn, apimboom2.globaldelight.net, photos.adobe.io, license.pdfexpert.com, subs.platforms.team, apic.musixmatch.com, api.getmimo.com, api.revenuecat.com, engbright.com, api.lingokids.com, www.peacefulsoundsapp.com, duolingo-leaderboards-prod.duolingo.com, mobile-api.adguard.com, api.blinkist.com, api-kinemaster-assetstore.*, api.pushover.net, ap*.intsig.net, api.overhq.com, receipt-validator.herewetest.com, lcs-mobile-cops.adobe.io, education.github.com, backend.getdrafts.com, ssl-api.itranslateapp.com, sk.ulysses.app, dayone.me, license.enpass.io, mp.bybutter.com, *.grammarly.com, splice.oracle.*.com, api.keepkeep.com, planner5d.com, secure.istreamer.com, www.api.monkeyuni.net, api.textnow.me, api.madewithfaded.com, nomo.dafork.com
