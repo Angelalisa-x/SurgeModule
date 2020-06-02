@@ -17,7 +17,9 @@ DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block_
 # BlockOTA
 #RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/BlockOTA.list,REJECT
 # Antirevoke
-#RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/Antirevoke.list,REJECT
+RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/Antirevoke.list,REJECT
+
+RULE-SET,https://github.com/lhie1/Rules/blob/master/Surge/Surge%203/Provider/Reject.list,REJECT
 
 [Script]
 # > 一言
