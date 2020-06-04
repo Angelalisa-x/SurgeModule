@@ -34,7 +34,7 @@ JD_DailyBonus.js = type=cron,cronexp=0 0 0/6 * * *,script-path=https://raw.githu
 
 # 什么值得买
 # 浏览器访问并登录: https://zhiyou.smzdm.com/user/login
-smzdm.js = type=cron,cronexp=25 1 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/quanx/smzdm.js,script-update-interval=0
+smzdm.js = type=cron,cronexp=25 1 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.js,script-update-interval=0
 
 # 饿了么   (By @syzzzf)
 # 打开 APP, 访问下`我的`>`签到领红包`(左上角)
