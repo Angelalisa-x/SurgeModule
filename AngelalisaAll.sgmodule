@@ -2,8 +2,6 @@
 #!desc=All Config
 
 [Rule]
-DOMAIN-SET,https://raw.githubusercontent.com/Licolnlee/AdBlockList/master/whitelist.txt,DIRECT
-
 #maicoo
 DOMAIN-SET,https://raw.githubusercontent.com/maicoo-l/Surge/master/rules/Filters.txt,REJECT
 #anti
