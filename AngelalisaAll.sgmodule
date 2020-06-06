@@ -2,6 +2,7 @@
 #!desc=All Config
 
 [Rule]
+DOMAIN-KEYWORD, nyxz166, REJECT
 #maicoo
 DOMAIN-SET,https://raw.githubusercontent.com/maicoo-l/Surge/master/rules/Filters.txt,REJECT
 #anti
