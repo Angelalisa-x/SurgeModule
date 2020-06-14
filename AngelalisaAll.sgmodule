@@ -33,37 +33,37 @@ RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hosts
 # 需要自己修改节日
 daysmatter.js = script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/daysmatter.js,tag=倒数日,type=cron,cronexp=0 0 8 * * *
 
-JD_DailyBonus.js = type=cron,cronexp=0 0 0/6 * * *,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js,script-update-interval=0
+#JD_DailyBonus.js = type=cron,cronexp=0 0 0/6 * * *,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js,script-update-interval=0
 
 # 什么值得买
 # 浏览器访问并登录: https://zhiyou.smzdm.com/user/login
-smzdm.js = type=cron,cronexp=25 1 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.js,script-update-interval=0
+#smzdm.js = type=cron,cronexp=25 1 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.js,script-update-interval=0
 
 # 饿了么   (By @syzzzf)
 # 打开 APP, 访问下`我的`>`签到领红包`(左上角)
-elemSign.js = type=cron,cronexp=35 4 0/12 * * *,script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemSign.js,script-update-interval=0
+#elemSign.js = type=cron,cronexp=35 4 0/12 * * *,script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemSign.js,script-update-interval=0
 
 # 携程旅行  (By @barrymchen)
 # 打开App 点击”我的“,然后点击”我的积分“,再点击下面的”签到.任务“即可
-ctrip.js = type=cron,cronexp=45 4 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/ctrip.js,script-update-interval=0
+#ctrip.js = type=cron,cronexp=45 4 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/ctrip.js,script-update-interval=0
 
 # 京东到家 (@barrymchen, @GideonSenku & @Macsuny)
 # APP登陆账号后，点击主页’签到‘,即可
-jddj.js = type=cron,cronexp=25 5 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jddj.js,script-update-interval=0
+#jddj.js = type=cron,cronexp=25 5 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jddj.js,script-update-interval=0
 
 # 快手极速版 (By @Macsuny)
 # APP登陆账号后，点击’钱包‘
-kuaishou.js = type=cron,cronexp=40 5 0/8 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/kuaishou.js,script-update-interval=0
+#kuaishou.js = type=cron,cronexp=40 5 0/8 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/kuaishou.js,script-update-interval=0
 
 # 趣头条
 # 打开 APP 进入签到:  `右上角` > `签到`
 # 阅读篇数获取Cookie:`小视频`中播放一段时间视频即可获取,具体的阅读篇数奖励请到应用内手动点击
 # 首页金币奖励:此Cookie在首页的推荐中随机出现,随机获取,并不一定会出现。
-趣头条 = type=cron,cronexp=20 4 * * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/qtt/qtt.js,script-update-interval=0
+#趣头条 = type=cron,cronexp=20 4 * * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/qtt/qtt.js,script-update-interval=0
 
 # > 电视家 (By @Macsuny)
 # APP登陆账号后，点击底部’赚赚‘进入签到页面,即可获取Cookie.
-电视家 = type=cron,cronexp=0 0 7,22 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js,script-update-interval=0
+#电视家 = type=cron,cronexp=0 0 7,22 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js,script-update-interval=0
 
 # > 有道云笔记
-有道云笔记 = type=cron,cronexp="3 0 * * *",script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/noteyoudao/noteyoudao.js,wake-system=true
+#有道云笔记 = type=cron,cronexp="3 0 * * *",script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/noteyoudao/noteyoudao.js,wake-system=true
