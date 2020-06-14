@@ -1,7 +1,56 @@
 #!name=All Config By Angelalisa
 #!desc=All Config
 
+[General]
+# > 优酷 去广告
+force-http-engine-hosts = %APPEND% vali.cp31.ott.cibntv.net
+
+
 [Rule]
+DOMAIN-SET,https://raw.githubusercontent.com/WildcardTech/Filter-Domain-List/master/whitelist.txt,DIRECT
+DOMAIN-SET,https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/whitelist/master/domains.list,DIRECT
+
+# > 京东  去启动广告
+URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
+# > 哔哩哔哩 去广告
+DOMAIN,data.bilibili.com,REJECT 
+URL-REGEX,https://app.bilibili.com/x/v2/(splash|search/(defaultword|square)),REJECT
+URL-REGEX,https://api.bilibili.com/x/v2/dm/ad,REJECT
+# > YouTube 去片头广告
+URL-REGEX,^https?:\/\/[\w-]+\.googlevideo\.com\/.+&(oad|ctier),REJECT-TINYGIF
+# > 知乎 去广告
+//SOME MCN INFO MAY BE USEFUL
+//URL-REGEX,https://www.zhihu.com/api/v4/mcn/,REJECT
+
+//DO NOT GET CDN-BASED IP
+DOMAIN,118.89.204.198,REJECT
+
+USER-AGENT,AVOS*,REJECT
+URL-REGEX,https://api.zhihu.com/(ad|drama|fringe|commercial|market/popover|search/(top|preset|tab)|.*featured-comment-ad),REJECT
+AND,((USER-AGENT,ZhihuHybrid*), (URL-REGEX,.*recommend)),REJECT
+# > 人人视频 去广告
+AND,((USER-AGENT,PUClient*), (NOT,((DOMAIN-SUFFIX,rr.tv)))),REJECT
+URL-REGEX,^https?:\/\/api\.rr\.tv\/(?:ad\/getAll$|storage/business/rootName/app/homePage),REJECT
+# > 优酷 去广告
+URL-REGEX,^http:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/,REJECT-TINYGIF
+# > 爱美剧 去广告
+URL-REGEX,^http(s)://api.bjxkhc.com/index.php/app/ios/pay/ok$ ,REJECT-TINYGIF
+URL-REGEX,^http(s)://api.bjxkhc.com/index.php/app/ios/ver/index_ios$,REJECT
+URL-REGEX,^http(s)://api.bjxkhc.com/index.php/app/ios/ads/index,REJECT-TINYGIF
+[URL Rewrite]
+# > TikTok 解锁
+(?<=_region=)CN(?=&) JP 307
+(?<=&app_version=)16..(?=.?.?&) 1 307
+(?<=\?version_code=)16..(?=.?.?&) 1 307 
+# > 抖音 去广告&水印
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/feed\/ https://aweme.snssdk.com/aweme/v1/feed/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/aweme\/post\/ https://aweme.snssdk.com/aweme/v1/aweme/post/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/follow\/feed\/ https://aweme.snssdk.com/aweme/v1/follow/feed/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/nearby\/feed\/ https://aweme.snssdk.com/aweme/v1/nearby/feed/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/search\/item\/ https://aweme.snssdk.com/aweme/v1/search/item/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/general\/search\/single\/ https://aweme.snssdk.com/aweme/v1/general/search/single/ header
+^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/hot/search\/video\/list\/ https://aweme.snssdk.com/aweme/v1/hot/search/video/list/ header
+
 #maicoo
 DOMAIN-SET,https://raw.githubusercontent.com/maicoo-l/Surge/master/rules/Filters.txt,REJECT
 #anti
@@ -27,43 +76,77 @@ RULE-SET,https://raw.githubusercontent.com/langkhach270389/Scripting/master/Surg
 RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rewrite.conf,REJECT
 RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rule.conf,REJECT
 
+[Header Rewrite]
+# > 小小影视vip (By Eric)
+https:\/\/.*.xiaoxiao(img|apps|appxs).com header-replace Cookie xxx_api_auth=6131333537653261363463323331666265663763396239663835636662373930
 
 [Script]
 # > 倒数日
 # 需要自己修改节日
 daysmatter.js = script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/daysmatter.js,tag=倒数日,type=cron,cronexp=0 0 8 * * *
 
-#JD_DailyBonus.js = type=cron,cronexp=0 0 0/6 * * *,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js,script-update-interval=0
+# > yichahucha
+# > 京东比价
+jd_price.js = type=http-response,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js,script-update-interval=0
+# > 淘宝比价
+# 不生效或失效的需要卸载 tb 重装，注意不开脚本进 tb 会失效
+tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-request,pattern=^http://.+/amdc/mobileDispatch
+tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-response,pattern=^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail
 
-# 什么值得买
-# 浏览器访问并登录: https://zhiyou.smzdm.com/user/login
-#smzdm.js = type=cron,cronexp=25 1 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.js,script-update-interval=0
+# > 抖音 & TikTok Remove Ad & Logo
+douyin_post = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme/v1/aweme\/post\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_feed = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/feed\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_follow = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/follow\/feed\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_naerby = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/nearby\/feed\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_item = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/search\/item\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_search = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/general\/search\/single\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+douyin_hot = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/hot\/search\/video\/list\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
 
-# 饿了么   (By @syzzzf)
-# 打开 APP, 访问下`我的`>`签到领红包`(左上角)
-#elemSign.js = type=cron,cronexp=35 4 0/12 * * *,script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemSign.js,script-update-interval=0
+# > 微信公众号
+WeChat.js = script-path=https://Choler.github.io/Surge/Script/WeChat.js,type=http-request,pattern=^https://mp\.weixin\.qq\.com/mp/getappmsgad
 
-# 携程旅行  (By @barrymchen)
-# 打开App 点击”我的“,然后点击”我的积分“,再点击下面的”签到.任务“即可
-#ctrip.js = type=cron,cronexp=45 4 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/ctrip.js,script-update-interval=0
+# > YouTube
+//YouTube.js = script-path=https://Choler.github.io/Surge/Script/YouTube.js,type=http-request,pattern=^https://[\s\S]*\.googlevideo\.com/.*&(oad|ctier)
+# > 网易考拉 去广告
+wykaola.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/wykaola.js,type=http-response,pattern=^https://sp\.kaola\.com/api/openad$
+# > 腾讯新闻 去广告
+QQNews.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/QQNews.js,type=http-response,pattern=^https://r\.inews\.qq.com\/get(QQNewsUnreadList|RecommendList)
+# > 人人视频 去广告
+rrsp_video = type=http-response,requires-body=true,pattern=^https?:\/\/api\.rr\.tv\/watch\/v\d\/get_movie_info,script-path=https://Choler.github.io/Surge/Script/rrsp.js
+rrsp_banner = type=http-response,requires-body=true,pattern=^https?:\/\/api\.rr\.tv\/v\dplus\/index\/channel$,script-path=https://Choler.github.io/Surge/Script/rrsp.js
+# > onewayticket255
+# > 知乎 去广告
+zhihu people = type=http-response,requires-body=1,max-size=0,pattern=https://api.zhihu.com/people/,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20people.js
+zhihu feed = type=http-response,requires-body=1,max-size=0,pattern=https://api.zhihu.com/moments/recommend,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20feed.js
+zhihu recommend = type=http-response,requires-body=1,max-size=0,pattern=https://api.zhihu.com/topstory/recommend,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20recommend.js
+zhihu answer = type=http-response,requires-body=1,max-size=0,pattern=https://api.zhihu.com/v4/questions,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20answer.js
+# > 哔哩哔哩 精简&去广告
+开启1080P+ = type=http-response,pattern=https:\/\/ap(p|i)\.bilibili\.com\/((pgc\/player\/api\/playurl)|(x\/v2\/account\/myinfo\?)|(x\/v2\/account/mine\?)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/Surge/master/Script/BiliHD.js
+收藏排行 = type=http-response,requires-body=1,max-size=0,pattern=https://app.bilibili.com/x/v2/space\?access_key,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20bilibili%20space.js
+首页 tab = type=http-response,requires-body=1,max-size=0,pattern=https://app.bilibili.com/x/resource/show/tab\?access_key,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20bilibili%20tab.js
+bilibili feed = type=http-response,requires-body=1,max-size=0,pattern=https://app.bilibili.com/x/v2/feed/index\?access_key,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20bilibili%20feed.js
+个人中心 = type=http-response,requires-body=1,max-size=0,pattern=https://app.bilibili.com/x/v2/account/mine\?access_key,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20bilibili%20account.js
+bilibili view = type=http-response,requires-body=1,max-size=0,pattern=https://app.bilibili.com/x/v2/view\?access_key,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20bilibili%20view%20relate.js
+bilibili reply = type=http-response,requires-body=1,max-size=0,pattern=https://api.bilibili.com/x/v2/reply/main\?access_key,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20bilibili%20reply.js
+bilibili live = type=http-response,requires-body=1,max-size=0,pattern=https://api.live.bilibili.com/xlive/app-room/v1/index/getInfoByRoom\?access_key,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20bilibili%20live.js
+# > NobyDa
+# > 皮皮虾  Remove Ad & Logo
+Super.js = requires-body=1,max-size=-1,script-path=https://raw.githubusercontent.com/Liquor030/Sub_Ruleset/master/Script/Super.js,type=http-response,pattern=^https?://.*\.snssdk\.com/bds/(feed/stream|comment/cell_reply|cell/cell_comment|cell/detail|ward/list|user/favorite|user/cell_coment|user/cell_userfeed|user/publish_list)
 
-# 京东到家 (@barrymchen, @GideonSenku & @Macsuny)
-# APP登陆账号后，点击主页’签到‘,即可
-#jddj.js = type=cron,cronexp=25 5 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jddj.js,script-update-interval=0
+# > 小小影视  去广告(By Eric)
+小小影视 = type=http-response,pattern=https:\/\/.*\/getGlobalData,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/xxysad.js,script-update-interval=0
 
-# 快手极速版 (By @Macsuny)
-# APP登陆账号后，点击’钱包‘
-#kuaishou.js = type=cron,cronexp=40 5 0/8 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/kuaishou.js,script-update-interval=0
+# 彩云天气 Vip
+彩云天气 = type=http-response,pattern=https://biz.caiyunapp.com/v2/user\?app_name=weather,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/Surge/master/Script/caiyun.js
 
-# 趣头条
-# 打开 APP 进入签到:  `右上角` > `签到`
-# 阅读篇数获取Cookie:`小视频`中播放一段时间视频即可获取,具体的阅读篇数奖励请到应用内手动点击
-# 首页金币奖励:此Cookie在首页的推荐中随机出现,随机获取,并不一定会出现。
-#趣头条 = type=cron,cronexp=20 4 * * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/qtt/qtt.js,script-update-interval=0
+# 轻颜相机 & ulike & 蒸汽波相机(vaporcam)三合一 解锁VIP(By @s y & Alex0510)
+qyxj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/qyxj.js,type=http-response,pattern=^https:\/\/commerce-.*api\.faceu\.mobi\/commerce\/v1\/subscription\/user_info
 
-# > 电视家 (By @Macsuny)
-# APP登陆账号后，点击底部’赚赚‘进入签到页面,即可获取Cookie.
-#电视家 = type=cron,cronexp=0 0 7,22 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/dianshijia.js,script-update-interval=0
+# > 有道云笔记 (By Alex0510)
+ydybj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/ydybj.js,type=http-response,pattern=https://note.youdao.com/yws/(mapi/payment|api/self)
+# > 彩云小译 (By Alex0510)
+cyxy.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/cyxy.js,type=http-response,pattern=^https:\/\/api\.interpreter\.caiyunai\.com\/v1\/user
 
-# > 有道云笔记
-#有道云笔记 = type=cron,cronexp="3 0 * * *",script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/noteyoudao/noteyoudao.js,wake-system=true
+# > 美颜相机一次性解锁内购（by黑黑酱）
+myxj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/myxj.js,type=http-response,pattern=^https:\/\/api\.meiyan\.com\/iap\/verify\.json
+
