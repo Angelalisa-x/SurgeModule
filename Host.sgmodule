@@ -35,3 +35,5 @@
 *.360buyimg.com = server:119.28.28.28
 *.msstatic.com = server:223.6.6.6
 *.douyucdn.cn = server:223.6.6.6
+*.ixigua.com = server:223.6.6.6
+*.video.iqiyi.com = server:223.6.6.6
