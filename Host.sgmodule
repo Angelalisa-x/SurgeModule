@@ -1,6 +1,5 @@
 #!name=Hosts by Angelalisa
-#!desc=Add host whitelist
-#!desc=本地 DNS 映射，以及广告站点重定向至 localhost 以拦截广告。
+#!desc=本地 DNS 映射
 
 [Host]
 ip6-localhost = ::1
