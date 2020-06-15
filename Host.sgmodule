@@ -36,3 +36,7 @@
 *.meituan.com = server:223.5.5.5
 *.iqiyi.com = server:223.6.6.6
 *.360buyimg.com = server:119.28.28.28
+*.douyu.com = server:223.6.6.6
+*.huya.com = server:223.6.6.6
+*.msstatic.com = server:223.6.6.6
+*.douyucdn.cn = server:223.6.6.6
