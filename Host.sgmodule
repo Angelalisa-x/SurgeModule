@@ -2,6 +2,8 @@
 #!desc=本地 DNS 映射
 
 [Host]
+*.jr.jd.com = server:223.6.6.6
+*pay.com = server:223.6.6.6
 *.msstatic.com = server:223.6.6.6
 *.douyucdn.cn = server:223.6.6.6
 *.ixigua.com = server:223.6.6.6
