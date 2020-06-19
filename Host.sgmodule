@@ -2,12 +2,6 @@
 #!desc=本地 DNS 映射
 
 [Host]
-*.alicdn.com = server:223.5.5.5
-*.alipay.com = server:223.5.5.5
-*.aliyun.com = server:223.5.5.5
-*.weixin.qq.com = server:223.6.6.6
-*.163.com = server:223.6.6.6
-*.360buyimg.com = server:223.6.6.6
 *.msstatic.com = server:223.6.6.6
 *.douyucdn.cn = server:223.6.6.6
 *.ixigua.com = server:223.6.6.6
@@ -15,3 +9,5 @@
 *.tinno.com = server:223.6.6.6
 *.yximgs.com = server:223.6.6.6
 apapia-history.manmanbuy.com = server:223.6.6.6
+*api.m.jd.com = server:223.6.6.6
+*api.smzdm.com = server:223.6.6.6
