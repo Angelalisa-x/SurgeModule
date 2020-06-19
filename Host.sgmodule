@@ -5,10 +5,8 @@
 *.taobao.com = server:223.6.6.6
 *.tmall.com = server:223.6.6.6
 *.jd.com = server:223.6.6.6
-*.tencent.com = server:223.6.6.6
 *.alicdn.com = server:223.5.5.5
 *.aliyun.com = server:223.5.5.5
-*.apple.com = server:223.6.6.6
 *.weixin.com = server:223.6.6.6
 *.163.com = server:223.6.6.6
 *.360buyimg.com = server:223.6.6.6
@@ -18,3 +16,4 @@
 *.video.iqiyi.com = server:223.6.6.6
 *.tinno.com = server:223.6.6.6
 *.yximgs.com = server:223.6.6.6
+apapia-history.manmanbuy.com = server:223.6.6.6
