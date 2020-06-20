@@ -7,8 +7,8 @@ force-http-engine-hosts = %APPEND% vali.cp31.ott.cibntv.net
 
 
 [Rule]
-DOMAIN-SET,https://raw.githubusercontent.com/WildcardTech/Filter-Domain-List/master/whitelist.txt,DIRECT
-DOMAIN-SET,https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/whitelist/master/domains.list,DIRECT
+#DOMAIN-SET,https://raw.githubusercontent.com/WildcardTech/Filter-Domain-List/master/whitelist.txt,DIRECT
+#DOMAIN-SET,https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/whitelist/master/domains.list,DIRECT
 
 URL-REGEX,^https?:\/\/(app-)?api\.smzdm\.com\/(v\d\/)?util\/(loading|banner),REJECT
 
