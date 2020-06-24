@@ -13,3 +13,8 @@
 apapia-history.manmanbuy.com = server:223.6.6.6
 *api.m.jd.com = server:223.6.6.6
 *api.smzdm.com = server:223.6.6.6
+*rmrbcmsonline.peopleapp.com =  server:223.6.6.6
+
+# Ad Hosts
+# 127.0.0.1 localhost
+*adstatic.peopleapp.* = = 127.0.0.1
