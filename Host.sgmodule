@@ -9,6 +9,13 @@
 *ylog.huya.com* = 127.0.0.1
 *business.msstatic.com* = 127.0.0.1
 
+*sta-op.douyucdn.cn* = 127.0.0.1
+*staticlive.douyucdn.cn* = 127.0.0.1
+*gfs-op.douyucdn.cn* = 127.0.0.1
+*va.videojj.com* = 127.0.0.1
+
+
+
 
 *.jr.jd.com = server:223.6.6.6
 *pay.com = server:223.6.6.6
