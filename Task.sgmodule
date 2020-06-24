@@ -1,0 +1,19 @@
+#!name=Task - All in one By Angelalisa
+#!desc=该模块适用于定时签到
+#!system=ios
+
+
+[Script]
+
+# > 京东农场 (By liuxiaoyucc)
+京东农场Task= type=cron,cronexp=1 0 7,12,18 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_fruit.js
+
+# > 京东宠汪汪 (By uniqueque)
+京东宠汪汪Task= type=cron,cronexp=0 */3 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_joy.js
+
+# > 京东种豆得豆 (By uniqueque)
+京东种豆得豆Task= type=cron,cronexp=1 7-21/2 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_plantBean.js
+
+# > 京东萌宠 (By liuxiaoyucc)
+京东农场= type=cron,cronexp=8 0/6 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_pet.js
+
