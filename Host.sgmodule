@@ -20,6 +20,7 @@ DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/AdK
 *apic.douyucdn.cn* = 127.0.0.1
 *res.douyucdn.cn* = 127.0.0.1
 
+*.iqiyipic.com* = 127.0.0.1
 
 
 
@@ -41,4 +42,4 @@ apapia-history.manmanbuy.com = server:223.6.6.6
 *adstatic.peopleapp.* = 127.0.0.1
 *pgdt.gtimg.cn* = 127.0.0.1
 *dx-pic1.iqiyipic.com* = 127.0.0.1
-*pic*.iqiyipic.com* = 127.0.0.1
+*pic0.iqiyipic.com* = 127.0.0.1
