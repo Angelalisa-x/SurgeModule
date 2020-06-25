@@ -1,6 +1,22 @@
 #!name=Hosts by Angelalisa
 #!desc=本地 DNS 映射
 
+[Rule]
+DOMAIN-SET,.huyaimg.msstatic.com,REJECT
+DOMAIN-SET,.diy-assets.msstatic.com,REJECT
+DOMAIN-SET,.v-cms-img.huya.com,REJECT
+DOMAIN-SET,.livewebbs2.msstatic.com,REJECT
+DOMAIN-SET,.ylog.huya.com,REJECT
+DOMAIN-SET,.business.msstatic.com,REJECT
+
+DOMAIN-SET,sta-op.douyucdn.cn,REJECT
+DOMAIN-SET,staticlive.douyucdn.cn,REJECT
+DOMAIN-SET,gfs-op.douyucdn.cn,REJECT
+DOMAIN-SET,va.videojj.com,REJECT
+DOMAIN-SET,apic.douyucdn.cn,REJECT
+DOMAIN-SET,res.douyucdn.cn,REJECT
+
+
 [Host]
 *huyaimg.msstatic.com* = 127.0.0.1
 *diy-assets.msstatic.com* = 127.0.0.1
