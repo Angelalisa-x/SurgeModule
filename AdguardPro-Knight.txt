@@ -1,0 +1,26 @@
+!
+! Title: AdGuard By Angelalise
+!
+
+||huyaimg.msstatic.com^
+||diy-assets.msstatic.com^
+||v-cms-img.huya.com^
+||livewebbs2.msstatic.com^
+||ylog.huya.com^
+||business.msstatic.com^
+||sta-op.douyucdn.cn^
+||staticlive.douyucdn.cn^
+||gfs-op.douyucdn.cn^
+||va.videojj.com^
+||apic.douyucdn.cn^
+||res.douyucdn.cn^
+||adstatic.peopleapp.^
+||pgdt.gtimg.cn^
+||gdmf.apple.com^
+||gdmf.apple.com.akadns.net^
+||mesu.apple.com^
+||mesu-cdn.apple.com.akadns.net^
+||mesu-cdn.origin-apple.com.akadns.net^
+||mesu.g.aaplimg.com^
+||appldnld.apple.com^
+||appldnld.apple.com.akadns.net^
