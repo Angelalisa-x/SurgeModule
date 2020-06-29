@@ -1,10 +1,6 @@
 #!name=Hosts by Angelalisa
 #!desc=本地 DNS 映射
 
-[Rule]
-DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/AdKnight.list,REJECT
-
-
 [Host]
 *huyaimg.msstatic.com* = 127.0.0.1
 *diy-assets.msstatic.com* = 127.0.0.1
