@@ -20,7 +20,6 @@ force-http-engine-hosts = %APPEND% vali.cp31.ott.cibntv.net
 *apic.douyucdn.cn* = 127.0.0.1
 *res.douyucdn.cn* = 127.0.0.1
 
-*api.smoot.apple.cn* = server:223.6.6.6
 *.jr.jd.com = server:223.6.6.6
 *pay.com = server:223.6.6.6
 *.msstatic.com = server:223.6.6.6
@@ -33,7 +32,6 @@ apapia-history.manmanbuy.com = server:223.6.6.6
 *api.m.jd.com = server:223.6.6.6
 *api.smzdm.com = server:223.6.6.6
 *rmrbcmsonline.peopleapp.com =  server:223.6.6.6
-*.c-ctrip.com* = server:223.6.6.6
 
 # Ad Hosts
 # 127.0.0.1 localhost
