@@ -48,8 +48,8 @@ apapia-history.manmanbuy.com = server:223.6.6.6
 *appldnld.apple.com* = 127.0.0.1
 *appldnld.apple.com.akadns.net* = 127.0.0.1
 *api.smoot.apple.cn* = 127.0.0.1
-*update* = 127.0.0.1
-
+*update.* = 127.0.0.1
+*update.pan.baidu.com* = 127.0.0.1
 [Rule]
 DOMAIN-SET,https://raw.githubusercontent.com/WildcardTech/Filter-Domain-List/master/whitelist.txt,DIRECT
 DOMAIN-SET,https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/whitelist/master/domains.list,DIRECT
