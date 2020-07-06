@@ -92,6 +92,7 @@ DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block_
 #RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rule.conf,REJECT
 
 [URL Rewrite]
+
 # > TikTok 解锁
 (?<=_region=)CN(?=&) JP 307
 (?<=&app_version=)16..(?=.?.?&) 1 307
@@ -106,21 +107,20 @@ DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block_
 ^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/hot/search\/video\/list\/ https://aweme.snssdk.com/aweme/v1/hot/search/video/list/ header
 
 [Script]
+
 # > yichahucha
 # > 京东比价
 jd_price.js = type=http-response,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js,script-update-interval=0
+
 # > 淘宝比价
 # 不生效或失效的需要卸载 tb 重装，注意不开脚本进 tb 会失效
 tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-request,pattern=^http://.+/amdc/mobileDispatch
 tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-response,pattern=^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail
-# > 抖音 & TikTok Remove Ad & Logo
-douyin_post = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme/v1/aweme\/post\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
-douyin_feed = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/feed\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
-douyin_follow = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/follow\/feed\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
-douyin_naerby = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/nearby\/feed\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
-douyin_item = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/search\/item\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
-douyin_search = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/general\/search\/single\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
-douyin_hot = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/hot\/search\/video\/list\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+
+# > 抖音 Remove Ad & Logo
+http-request ^https:\/\/.*\.amemv\.com\/aweme\/v.*\/(feed|post) script-path=https://Choler.github.io/Surge/Script/Aweme.js
+http-response ^https:\/\/.*\.amemv\.com\/aweme\/v1.*\/(feed|post) requires-body=true,script-path=https://Choler.github.io/Surge/Script/Aweme.js
+
 # > 微信公众号
 WeChat.js = script-path=https://Choler.github.io/Surge/Script/WeChat.js,type=http-request,pattern=^https://mp\.weixin\.qq\.com/mp/getappmsgad
 # > NobyDa
@@ -193,7 +193,6 @@ cpdq.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.c
 # > 吾爱破解
 吾爱破解 = type=cron,cronexp=10 0 0/12 * * *,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js,script-update-interval=0
 
-
 # 什么值得买
 # 浏览器访问并登录: https://zhiyou.smzdm.com/user/login
 什么值得买 = type=cron,cronexp=25 1 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.js,script-update-interval=0
@@ -205,10 +204,6 @@ cpdq.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.c
 # > 携程旅行  (By @barrymchen)
 # 打开App 点击”我的“,然后点击”我的积分“,再点击下面的”签到.任务“即可
 携程旅行 = type=cron,cronexp=45 4 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/ctrip.js,script-update-interval=0
-
-# > 微信小程序-来客有礼 (By @Macsuny)
-# 微信搜索’来客有礼‘小程序,登陆京东账号，点击’领京豆->翻牌‘
-来客有礼 = type=cron,cronexp=30 5 0/12 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/lkyl.js,script-update-interval=0
 
 # > 喜茶 (By @zZPiglet)
 # 进入"喜茶GO"小程序，点击"我的"，进入"任务中心"
