@@ -68,3 +68,6 @@ tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yich
 # > 携程旅行  (By @barrymchen)
 # 打开App 点击”我的“,然后点击”我的积分“,再点击下面的”签到.任务“即可
 携程旅行 = type=cron,cronexp=45 4 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/ctrip.js,script-update-interval=0
+
+[MITM]
+hostname = %APPEND% api.m.jd.com, trade-acs.m.taobao.com
