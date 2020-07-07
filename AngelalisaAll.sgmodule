@@ -57,6 +57,10 @@ tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yich
 # 京东App - 右下角"我的"- 游戏与互动-天天加速
 京东加速=type=cron,cronexp=0 */3 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_speed.js
 
+# > 京东到家 (@barrymchen, @GideonSenku & @Macsuny)
+# APP登陆账号后，点击主页’签到‘,即可
+京东到家 = type=cron,cronexp=25 5 0 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jddj.js,script-update-interval=0
+
 # > 吾爱破解
 吾爱破解 = type=cron,cronexp=10 0 0/12 * * *,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js,script-update-interval=0
 
