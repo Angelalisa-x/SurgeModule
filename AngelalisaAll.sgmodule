@@ -1,6 +1,52 @@
 #!name=All Config By Angelalisa
 #!desc=All Config
 
+
+[Host]
+*huyaimg.msstatic.com* = 127.0.0.1
+*diy-assets.msstatic.com* = 127.0.0.1
+*v-cms-img.huya.com* = 127.0.0.1
+*livewebbs2.msstatic.com* = 127.0.0.1
+*ylog.huya.com* = 127.0.0.1
+*business.msstatic.com* = 127.0.0.1
+
+*sta-op.douyucdn.cn* = 127.0.0.1
+*staticlive.douyucdn.cn* = 127.0.0.1
+*gfs-op.douyucdn.cn* = 127.0.0.1
+*va.videojj.com* = 127.0.0.1
+*apic.douyucdn.cn* = 127.0.0.1
+*res.douyucdn.cn* = 127.0.0.1
+
+*.jr.jd.com = server:223.6.6.6
+*pay.com = server:223.6.6.6
+*.msstatic.com = server:223.6.6.6
+*.douyucdn.cn = server:223.6.6.6
+*.ixigua.com = server:223.6.6.6
+*.video.iqiyi.com = server:223.6.6.6
+*.tinno.com = server:223.6.6.6
+*.yximgs.com = server:223.6.6.6
+apapia-history.manmanbuy.com = server:223.6.6.6
+*api.m.jd.com = server:223.6.6.6
+*api.smzdm.com = server:223.6.6.6
+*rmrbcmsonline.peopleapp.com =  server:223.6.6.6
+
+# Ad Hosts
+# 127.0.0.1 localhost
+*adstatic.peopleapp.* = 127.0.0.1
+*pgdt.gtimg.cn* = 127.0.0.1
+*.iqiyipic.com* = server:182.92.108.23
+
+*gdmf.apple.com* = 127.0.0.1
+*gdmf.apple.com.akadns.net* = 127.0.0.1
+*mesu.apple.com* = 127.0.0.1
+*mesu-cdn.apple.com.akadns.net* = 127.0.0.1
+*mesu-cdn.origin-apple.com.akadns.net* = 127.0.0.1
+*mesu.g.aaplimg.com* = 127.0.0.1
+*appldnld.apple.com* = 127.0.0.1
+*appldnld.apple.com.akadns.net* = 127.0.0.1
+*api.smoot.apple.cn* = 127.0.0.1
+*update* = 127.0.0.1
+
 [Rule]
 RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/BlockOTA.list,REJECT
 
