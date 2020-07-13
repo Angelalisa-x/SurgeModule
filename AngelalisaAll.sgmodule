@@ -37,7 +37,7 @@ apapia-history.manmanbuy.com = server:223.6.6.6
 # 127.0.0.1 localhost
 *adstatic.peopleapp.* = 127.0.0.1
 *pgdt.gtimg.cn* = 127.0.0.1
-*.iqiyipic.com* = server:182.92.108.23
+#*.iqiyipic.com* = server:182.92.108.23
 
 *gdmf.apple.com* = 127.0.0.1
 *gdmf.apple.com.akadns.net* = 127.0.0.1
