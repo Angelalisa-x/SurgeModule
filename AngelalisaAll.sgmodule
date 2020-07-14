@@ -49,6 +49,7 @@ apapia-history.manmanbuy.com = server:223.6.6.6
 *appldnld.apple.com.akadns.net* = 127.0.0.1
 *api.smoot.apple.cn* = 127.0.0.1
 *update* = 127.0.0.1
+*.taobao.com = server:223.6.6.6
 
 [Rule]
 URL-REGEX,^https?:\/\/(app-)?api\.smzdm\.com\/(v\d\/)?util\/(loading|banner),REJECT
