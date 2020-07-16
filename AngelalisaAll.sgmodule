@@ -2,56 +2,10 @@
 #!desc=All Config
 
 
-[Host]
-*huyaimg.msstatic.com* = 127.0.0.1
-*diy-assets.msstatic.com* = 127.0.0.1
-*v-cms-img.huya.com* = 127.0.0.1
-*livewebbs2.msstatic.com* = 127.0.0.1
-*ylog.huya.com* = 127.0.0.1
-*business.msstatic.com* = 127.0.0.1
-
-*sta-op.douyucdn.cn* = 127.0.0.1
-*staticlive.douyucdn.cn* = 127.0.0.1
-*gfs-op.douyucdn.cn* = 127.0.0.1
-*va.videojj.com* = 127.0.0.1
-*apic.douyucdn.cn* = 127.0.0.1
-*res.douyucdn.cn* = 127.0.0.1
-
-*.jr.jd.com = server:223.6.6.6
-*pay.com = server:223.6.6.6
-*.msstatic.com = server:223.6.6.6
-*.douyucdn.cn = server:223.6.6.6
-*.ixigua.com = server:223.6.6.6
-*.video.iqiyi.com = server:223.6.6.6
-*.tinno.com = server:223.6.6.6
-*.yximgs.com = server:223.6.6.6
-apapia-history.manmanbuy.com = server:223.6.6.6
-*api.m.jd.com = server:223.6.6.6
-*api.smzdm.com = server:223.6.6.6
-*rmrbcmsonline.peopleapp.com =  server:223.6.6.6
-*m.tjjt360.com* =  server:223.6.6.6
-*gia.jd.com* =  server:223.6.6.6
-*smarthome-drcn.dbankcdn.com* =  server:223.6.6.6
-
-# Ad Hosts
-# 127.0.0.1 localhost
-*adstatic.peopleapp.* = 127.0.0.1
-*pgdt.gtimg.cn* = 127.0.0.1
-#*.iqiyipic.com* = server:182.92.108.23
-
-*gdmf.apple.com* = 127.0.0.1
-*gdmf.apple.com.akadns.net* = 127.0.0.1
-*mesu.apple.com* = 127.0.0.1
-*mesu-cdn.apple.com.akadns.net* = 127.0.0.1
-*mesu-cdn.origin-apple.com.akadns.net* = 127.0.0.1
-*mesu.g.aaplimg.com* = 127.0.0.1
-*appldnld.apple.com* = 127.0.0.1
-*appldnld.apple.com.akadns.net* = 127.0.0.1
-*api.smoot.apple.cn* = 127.0.0.1
-*update* = 127.0.0.1
-*.taobao.com = server:223.6.6.6
-
 [Rule]
+DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/WhiteKnight.txt,DIRECT
+DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/AdKnight.txt,REJECT
+
 URL-REGEX,^https?:\/\/(app-)?api\.smzdm\.com\/(v\d\/)?util\/(loading|banner),REJECT
 
 # > 京东  去启动广告
@@ -73,57 +27,6 @@ jd_price.js = type=http-response,pattern=^https?://api\.m\.jd\.com/client\.actio
 # 不生效或失效的需要卸载 tb 重装，注意不开脚本进 tb 会失效
 tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-request,pattern=^http://.+/amdc/mobileDispatch
 tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-response,pattern=^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail
-
-# > 京东
-#京东 = type=cron,cronexp=0 0 0/6 * * *,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js,script-update-interval=0
-
-# > 饿了么   (By @syzzzf)
-# 打开 APP, 访问下`我的`>`签到领红包`(左上角)
-#饿了么 = type=cron,cronexp=35 4 0/12 * * *,script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemSign.js,script-update-interval=0
-#饿了么-打卡领红包= type=cron,cronexp=35 4 0/12 * * *,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/elem/elemCheckIn.js
-
-# > 快手极速版 (By @Macsuny)
-# APP登陆账号后，点击’钱包‘
-#快手极速版 = type=cron,cronexp=40 5 0/12 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/kuaishou.js,script-update-interval=0
-
-# > 京东农场 (By liuxiaoyucc、lxk0301 & iepngs)
-# 京东App - 右下角"我的"- 游戏与互动- 东东农场
-#京东农场= type=cron,cronexp=8 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_fruit.js
-
-# > 京东萌宠 (By liuxiaoyucc、lxk0301 & iepngs)
-# 京东App - 右下角"我的"- 游戏与互动-东东萌宠
-#京东农场= type=cron,cronexp=8 0 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_pet.js
-
-# > 京东宠汪汪 (By uniqueque、lxk0301 & iepngs)
-# 京东App - 右下角"我的"- 游戏与互动-宠汪汪
-#京东宠汪汪= type=cron,cronexp=0 */3 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_joy.js
-
-# > 京东种豆得豆 (By uniqueque、lxk0301 & iepngs)
-# 京东App - 右下角"我的"- 游戏与互动-种豆得豆
-#京东种豆得豆= type=cron,cronexp=8 7-21/3 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_plantBean.js
-
-# > 京东摇钱树 (By lxk0301)
-# 京东App - 右下角"我的"- 游戏与互动-摇钱树
-#京东摇钱树=type=cron,cronexp=*/6 * * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_moneyTree.js
-
-# > 京东加速 (By lxk0301)
-# 京东App - 右下角"我的"- 游戏与互动-天天加速
-#京东加速=type=cron,cronexp=0 */3 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/jd_speed.js
-
-# > 京东到家 (@barrymchen, @GideonSenku & @Macsuny)
-# APP登陆账号后，点击主页’签到‘,即可
-#京东到家 = type=cron,cronexp=25 5 0 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jddj.js,script-update-interval=0
-
-# > 吾爱破解
-#吾爱破解 = type=cron,cronexp=10 0 0/12 * * *,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js,script-update-interval=0
-
-# 什么值得买
-# 浏览器访问并登录: https://zhiyou.smzdm.com/user/login
-#什么值得买 = type=cron,cronexp=25 1 0/12 * * *,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.js,script-update-interval=0
-
-# > 携程旅行  (By @barrymchen)
-# 打开App 点击”我的“,然后点击”我的积分“,再点击下面的”签到.任务“即可
-#携程旅行 = type=cron,cronexp=45 4 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/ctrip.js,script-update-interval=0
 
 [MITM]
 hostname = %APPEND% api.m.jd.com, trade-acs.m.taobao.com

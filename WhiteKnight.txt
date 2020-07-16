@@ -1,0 +1,7 @@
+# DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/WhiteKnight.txt,DIRECT
+
+# Current total domain name : AD_White
+
+
+.gia.jd.com
+.jrclick.jd.com
