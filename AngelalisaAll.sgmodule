@@ -18,22 +18,6 @@ DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block.
 RULE-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block_Add.txt,REJECT
 DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block_Plus.txt,REJECT
 
-#maicoo
-DOMAIN-SET,https://raw.githubusercontent.com/maicoo-l/Surge/master/rules/Filters.txt,REJECT
-
-#nzw9314
-RULE-SET,https://raw.githubusercontent.com/eHpo1/Rules/master/Surge4/Ruleset/Liby.list,REJECT
-RULE-SET,https://raw.githubusercontent.com/eHpo1/Rules/master/Surge4/Ruleset/Tide.list,REJECT
-
-RULE-SET,https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Provider/Reject.list,REJECT
-
-RULE-SET,https://raw.githubusercontent.com/langkhach270389/Scripting/master/Surge/rules/Kakaotalk.list,REJECT
-RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rule.conf,REJECT
-
-#ACL4SSR
-RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list,REJECT
-RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list,REJECT
-RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyListChina.list,REJECT
 
 [URL Rewrite]
 # > 抖音 去广告&水印
