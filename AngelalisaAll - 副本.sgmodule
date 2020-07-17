@@ -111,6 +111,8 @@ RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyL
 ^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/general\/search\/single\/ https://aweme.snssdk.com/aweme/v1/general/search/single/ header
 ^https?:\/\/[\w-]+\.amemv\.com\/aweme\/v\d\/hot/search\/video\/list\/ https://aweme.snssdk.com/aweme/v1/hot/search/video/list/ header
 
+^https://aweme-eagle(.*)\.snssdk\.com/aweme/v2/ https://aweme-eagle$1.snssdk.com/aweme/v1/ 302
+
 [Script]
 # > 京东比价
 jd_price.js = type=http-response,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js,script-update-interval=0
@@ -171,5 +173,9 @@ tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yich
 # 打开App 点击”我的“,然后点击”我的积分“,再点击下面的”签到.任务“即可
 #携程旅行 = type=cron,cronexp=45 4 0/12 * * *,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/ctrip.js,script-update-interval=0
 
+抖音 & TikTok = type=http-request,pattern=^https:\/\/.*\.(amemv|musical)\.(com|ly)\/aweme\/v.*\/(feed|post),requires-body=1,max-size=0,script-path=https://choler.github.io/Surge/Script/Aweme.js
+抖音 & TikTok = type=http-response,pattern=^https:\/\/.*\.(amemv|musical)\.(com|ly)\/aweme\/v.*\/(feed|post),requires-body=1,max-size=0,script-path=https://choler.github.io/Surge/Script/Aweme.js
+
+
 [MITM]
-hostname = %APPEND% api.m.jd.com, trade-acs.m.taobao.com
+hostname = %APPEND% api.m.jd.com, trade-acs.m.taobao.com, *.snssdk.com, *.amemv.com, *.musical.ly
