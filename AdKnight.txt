@@ -28,3 +28,4 @@
 .appldnld.apple.com.akadns.net
 .api.smoot.apple.cn
 .update
+.eimg.smzdm.com
