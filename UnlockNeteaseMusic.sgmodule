@@ -1,0 +1,13 @@
+#!name=UnlockNeteaseMusic - By Angelalisa
+#!desc=解锁灰色歌曲
+#!system=ios
+
+[Proxy]
+🚀 Direct = direct
+🎧 = http, xbmmw.xyz, 1001, over-tls=false,fast-open=false,udp-relay=false
+
+[Proxy Group]
+🎧 网易云音乐 = select, 🚀 Direct, 🎧
+
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/UnlockNeteaseMusic.list,🎧 网易云音乐
