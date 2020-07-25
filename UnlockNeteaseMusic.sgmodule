@@ -4,8 +4,8 @@
 
 [Proxy]
 🚀 Direct = direct
-#🎧 = http, xbmmw.xyz, 1001, over-tls=false,fast-open=false,udp-relay=false
-🎧 = http, 106.52.127.72, 19951, over-tls=false,fast-open=false,udp-relay=false
+🎧 = http, xbmmw.xyz, 1001, over-tls=false,fast-open=false,udp-relay=false
+#🎧 = http, 106.52.127.72, 19951, over-tls=false,fast-open=false,udp-relay=false
 
 [Proxy Group]
 🎧 网易云音乐 = select, 🚀 Direct, 🎧
