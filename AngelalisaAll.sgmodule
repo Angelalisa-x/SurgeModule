@@ -14,7 +14,7 @@ URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-
 URL-REGEX,^http:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/,REJECT-TINYGIF
 
 #maicoo
-#DOMAIN-SET,https://raw.githubusercontent.com/maicoo-l/Surge/master/rules/Filters.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/maicoo-l/Surge/master/rules/Filters.txt,REJECT
 
 #anti
 DOMAIN-SET,https://gitee.com/privacy-protection-tools/anti-ad/raw/master/domains.txt,REJECT
