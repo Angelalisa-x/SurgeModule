@@ -14,7 +14,7 @@ URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-
 URL-REGEX,^http:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/,REJECT-TINYGIF
 
 #anti
-DOMAIN-SET,https://gitee.com/privacy-protection-tools/anti-ad/raw/master/domains.txt,REJECT
+DOMAIN-SET,https://anti-ad.net/domains.txt,REJECT
 
 #NobyDa
 DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block.txt,REJECT
