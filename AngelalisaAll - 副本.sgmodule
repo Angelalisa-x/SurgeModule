@@ -64,10 +64,10 @@ URL-REGEX,^http:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/,REJECT-TINYGIF
 
 
 #maicoo
-#DOMAIN-SET,https://raw.githubusercontent.com/maicoo-l/Surge/master/rules/Filters.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/maicoo-l/Surge/master/rules/Filters.txt,REJECT
 
 #anti
-DOMAIN-SET,https://gitee.com/privacy-protection-tools/anti-ad/raw/master/domains.txt,REJECT
+DOMAIN-SET,https://anti-ad.net/domains.txt,REJECT
 
 #NobyDa
 DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block.txt,REJECT
@@ -80,16 +80,16 @@ DOMAIN-SET,https://raw.githubusercontent.com/NobyDa/ND-AD/master/Surge/AD_Block_
 #RULE-SET,https://raw.githubusercontent.com/NobyDa/Script/master/Surge/AdRuleRegex.list,REJECT
 
 # BlockOTA
-#RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/BlockOTA.list,REJECT
+RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/BlockOTA.list,REJECT
 
 # Antirevoke
-#RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/Antirevoke.list,REJECT
+RULE-SET,https://raw.githubusercontent.com/nzw9314/Surge/master/Ruleset/Antirevoke.list,REJECT
 
-#RULE-SET,https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Provider/Reject.list,REJECT
+RULE-SET,https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Provider/Reject.list,REJECT
 
-#RULE-SET,https://raw.githubusercontent.com/langkhach270389/Scripting/master/Surge/rules/Kakaotalk.list,REJECT
-#RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rewrite.conf,REJECT
-#RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rule.conf,REJECT
+RULE-SET,https://raw.githubusercontent.com/langkhach270389/Scripting/master/Surge/rules/Kakaotalk.list,REJECT
+RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rewrite.conf,REJECT
+RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hostsVN-surge-rule.conf,REJECT
 
 #ACL4SSR
 RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list,REJECT
