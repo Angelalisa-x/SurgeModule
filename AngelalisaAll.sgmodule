@@ -25,6 +25,10 @@ RULE-SET,https://raw.githubusercontent.com/NobyDa/Script/master/Surge/AdRuleRege
 RULE-SET,https://raw.githubusercontent.com/NobyDa/Script/master/Surge/AdRule.list,REJECT
 RULE-SET,https://raw.githubusercontent.com/NobyDa/Script/master/Surge/AdRuleTest.list,REJECT
 
+[URL Rewrite]
+(?<=_region=)CN(?=&) JP 307
+(?<=&app_version=)16..(?=.?.?&) 1 307
+(?<=\?version_code=)16..(?=.?.?&) 1 307
 
 [Script]
 jd_price.js = type=http-response,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js,script-update-interval=0
@@ -36,4 +40,4 @@ WeChat.js = script-path=https://Choler.github.io/Surge/Script/WeChat.js,type=htt
 
 
 [MITM]
-hostname = %APPEND% api.m.jd.com, trade-acs.m.taobao.com, mp.weixin.qq.com
+hostname = %APPEND% api.m.jd.com, trade-acs.m.taobao.com, mp.weixin.qq.com, *.musical.ly, *.tiktokv.com, *.byteoversea.com, *.snssdk.com
