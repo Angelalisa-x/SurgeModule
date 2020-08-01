@@ -5,3 +5,4 @@
 
 .gia.jd.com
 .jrclick.jd.com
+.bsrv.qq.com
