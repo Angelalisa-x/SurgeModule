@@ -1,0 +1,7 @@
+#!name=All Config By Anti-Ad
+#!desc=All Config
+
+
+[Rule]
+#anti
+DOMAIN-SET,https://anti-ad.net/domains.txt,REJECT
