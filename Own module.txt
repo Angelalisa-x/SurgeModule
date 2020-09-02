@@ -29,5 +29,10 @@ https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Module/Bloc
 https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Module/General.sgmodule
 https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Module/Block/Advertising.sgmodule
 
+#历史价格显示
+https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Module/Historical%20price.sgmodule
+
+#网关
+https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Module/Common_port.sgmodule
 
 
