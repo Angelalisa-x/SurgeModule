@@ -12,6 +12,9 @@ URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-
 DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/WhiteKnight.txt,DIRECT
 DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/AdKnight.txt,REJECT
 RULE-SET,https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Provider/Reject.list,REJECT
+DOMAIN-SET,https://badmojr.github.io/1Hosts/Pro/domains.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/BlackJack8/iOSAdblockList/master/Hosts.txt,REJECT
+
 
 URL-REGEX,^https?:\/\/(app-)?api\.smzdm\.com\/(v\d\/)?util\/(loading|banner),REJECT
 
