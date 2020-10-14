@@ -10,9 +10,18 @@ force-http-engine-hosts = %APPEND% vali.cp31.ott.cibntv.net
 URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
 
 DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/WhiteKnight.txt,DIRECT
-DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/AdKnight.txt,REJECT
 RULE-SET,https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Provider/Reject.list,REJECT
 DOMAIN-SET,https://raw.githubusercontent.com/BlackJack8/iOSAdblockList/master/Hosts.txt,REJECT
+
+# DOMAIN-SET 广告过滤，自行选择开启
+DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/AdKnight.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/scomper/surge-list/master/domain-set/adaway.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/scomper/surge-list/master/domain-set/annoyances-filter.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/scomper/surge-list/master/domain-set/base-filter.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/scomper/surge-list/master/domain-set/chinese-filter.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/scomper/surge-list/master/domain-set/neohosts.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/scomper/surge-list/master/domain-set/social-media-filter.txt,REJECT
+DOMAIN-SET,https://raw.githubusercontent.com/scomper/surge-list/master/domain-set/tracking-protection-filter.txt,REJECT
 
 
 URL-REGEX,^https?:\/\/(app-)?api\.smzdm\.com\/(v\d\/)?util\/(loading|banner),REJECT
@@ -23,12 +32,9 @@ URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-
 URL-REGEX,^http:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/,REJECT-TINYGIF
 
 
-
 [Script]
-jd_price.js = type=http-response,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js,script-update-interval=0
-
-tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-request,pattern=^http://.+/amdc/mobileDispatch
-tb_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js,type=http-response,pattern=^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail
+# 微信去广告 （mp.weixin.qq.com）
+http-response ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
 
 WeChat.js = script-path=https://Choler.github.io/Surge/Script/WeChat.js,type=http-request,pattern=^https://mp\.weixin\.qq\.com/mp/getappmsgad
 
@@ -41,6 +47,8 @@ ydybj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.
 # > 美颜相机一次性解锁内购（by黑黑酱）
 myxj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/myxj.js,type=http-response,pattern=^https:\/\/api\.meiyan\.com\/iap\/verify\.json
 
+cron "4 8 * * *" script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/exchangeRate.js, tag=实时货币换算
+cron "0 10 18 * * *" script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/lol.js,tag=英雄联盟排名
 
 [MITM]
 hostname = %APPEND% api.m.jd.com, trade-acs.m.taobao.com, mp.weixin.qq.com, *.musical.ly, commerce-i18n-api.faceu.mobi,commerce-api.faceu.mobi, pay.wecut.com, note.youdao.com, api.meiyan.com
