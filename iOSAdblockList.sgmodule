@@ -1,0 +1,7 @@
+#!name=All Config By iOSAdblockList
+#!desc=All Config
+
+
+[Rule]
+#iOSAdblockList
+DOMAIN-SET,https://raw.githubusercontent.com/BlackJack8/iOSAdblockList/master/Hosts.txt,REJECT
