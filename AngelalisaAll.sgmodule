@@ -9,18 +9,6 @@ force-http-engine-hosts = %APPEND% vali.cp31.ott.cibntv.net
 # > 京东  去启动广告
 URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
 
-DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/WhiteKnight.txt,DIRECT
-
-DOMAIN-SET,https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/AdKnight.txt,REJECT
-
-
-URL-REGEX,^https?:\/\/(app-)?api\.smzdm\.com\/(v\d\/)?util\/(loading|banner),REJECT
-
-URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
-
-# > youku ad
-URL-REGEX,^http:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/,REJECT-TINYGIF
-
 
 [Script]
 # 微信去广告 （mp.weixin.qq.com）
@@ -37,5 +25,80 @@ ydybj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.
 # > 美颜相机一次性解锁内购（by黑黑酱）
 myxj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/myxj.js,type=http-response,pattern=^https:\/\/api\.meiyan\.com\/iap\/verify\.json
 
+# > 026 科技窝（20201228）
+https://www.benbenfx.xyz/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 025 森茂小苑 （20201219）
+https://[a-z]+.smkj33.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 024 电视盒子君（20201218）
+https://tvapp.guilaile.cn/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 023 公子黑科技（20201218）
+https://gz.gongzijx.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 022 世颜说 （20201217）
+https://d.syshhc.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 021 搞机师兄（20201216）
+https://gjsx.vip/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 020 火箭软件库（20201216）
+https://jt.jxjt888.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 019 天书乱谈（20201215）
+https://[a-z]+.tslt.xyz/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 018 老胡群英会（20201215）
+https://g.syshhc.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 017 天泽百宝箱（20201215）
+https://c.jxjt888.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 016 老鬼黑科技（20201215）
+https://www.laoguikeji.cn/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 015 黑科技软件源（20201215）
+https://qj.bpojie.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 014 天书X乱谈（20201215）
+https://b.tslt.xyz/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 013 图层黑科技（20201215）
+https://m.xgjyouhui.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 012 free 黑科技（20201215）
+https://www.freeheikeji.cn/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 011 小纸箱助手（20201215）
+https://xcx.xianbaow.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 010 扎比科技资源箱 弹框显示内容（20201214）
+https://jabi.coding.net/p/xcx/d/xcx/git/raw/master/jabikj.json url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/jabi.js
+
+# > 009 AppleAndroid 弹框显示内容（20201214）
+https://iosoi.cn/wp-json/wp/v2/posts/\d+ url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+# > 辅助去除页面嵌入式式卡片广告（20201214）
+https://iosoi.cn/wp-content/plugins url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 008 森茂雅苑 （20201027）
+https://d.smkj33.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 005-007 酸鸡汤,老爷花苑,御花园（20201214）
+https://[a-z]+.ddly666.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 004 黑科技软件（20200901）
+^https:\/\/hkj178.com/wp-json/mp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+# > 辅助去除页面嵌入式式卡片广告（20201214）
+https://hkj178.com/wp-json/mp/v2/advert/wechat url reject-200
+
+# > 003 天泽后花园（20200901）
+^https:\/\/a.jxjt888.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 002 小野分享（20201215）
+^https:\/\/lysl2020.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
+
+# > 001 搜罗好货（20200924）
+^https:\/\/www.i3zh.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
 [MITM]
 hostname = %APPEND% api.m.jd.com, trade-acs.m.taobao.com, mp.weixin.qq.com, *.musical.ly, commerce-i18n-api.faceu.mobi,commerce-api.faceu.mobi, pay.wecut.com, note.youdao.com, api.meiyan.com
