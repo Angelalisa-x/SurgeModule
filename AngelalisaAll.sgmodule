@@ -1,6 +1,13 @@
 #!name=All Config By Angelalisa
 #!desc=All Config
 
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/Surge/AllInOne/AllInOne.sgmodule
+# https://raw.githubusercontent.com/mudori/Surge/master/Module/TB_Price.sgmodule
+# https://raw.githubusercontent.com/mudori/Surge/master/Module/JD_Price.sgmodule
+# https://raw.githubusercontent.com/Choler/Surge/master/Module/douyin.sgmodule
+# https://raw.githubusercontent.com/Choler/Surge/master/Module/youtube.sgmodule
+# https://raw.githubusercontent.com/Choler/Surge/master/Module/youku.sgmodule
+
 [General]
 # > 优酷 去广告
 force-http-engine-hosts = %APPEND% vali.cp31.ott.cibntv.net
@@ -8,95 +15,34 @@ force-http-engine-hosts = %APPEND% vali.cp31.ott.cibntv.net
 [Rule]
 # > 京东  去启动广告
 URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
+URL-REGEX,^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
+URL-REGEX,^https:\/\/b?dsp-x\.jd\.com\/adx\/,REJECT
+URL-REGEX,^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/base\/na\/m\/adInfo,REJECT
+URL-REGEX,^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/na\/m\/getLoadingPicture,REJECT
+# > 优酷 去广告
+URL-REGEX,^http:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/,REJECT-TINYGIF
+URL-REGEX,^https:\/\/.+?\.mp4\?ccode=0902,REJECT
+URL-REGEX,^https:\/\/.+?\.mp4\?sid=,REJECT
+URL-REGEX,^https:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/.+?\.mp4\?sid=,REJECT
 
+[URL Rewrite]
+# > 抖音 去广告&水印
+^https://acs\.m\.taobao\.com/gw/mtop\.alicom\.secret\.records\.get/1\.0\?rnd\= - reject
+^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/feed\/ https://aweme.snssdk.com/aweme/v1/feed/ header
+^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/aweme\/post\/ https://aweme.snssdk.com/aweme/v1/aweme/post/ header
+^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/follow\/feed\/ https://aweme.snssdk.com/aweme/v1/follow/feed/ header
+^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/nearby\/feed\/ https://aweme.snssdk.com/aweme/v1/nearby/feed/ header
+^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/search\/item\/ https://aweme.snssdk.com/aweme/v1/search/item/ header
+^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/general\/search\/single\/ https://aweme.snssdk.com/aweme/v1/general/search/single/ header
+^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/hot/search\/video\/list\/ https://aweme.snssdk.com/aweme/v1/hot/search/video/list/ header
 
 [Script]
-# 微信去广告 （mp.weixin.qq.com）
-http-response ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+微信公众号去广告 = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js,type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad
+# > 抖音 & TikTok Remove Ad & Logo
+douyin_ad = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/(feed|aweme\/post|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list)\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
+#taobao
+http-request ^http://.+/amdc/mobileDispatch requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
+http-response ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
 
-# 轻颜相机 & ulike & 蒸汽波相机(vaporcam)三合一 解锁VIP(By @s y & Alex0510)
-qyxj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/qyxj.js,type=http-response,pattern=^https:\/\/commerce-.*api\.faceu\.mobi\/commerce\/v1\/subscription\/user_info
-
-# > 有道云笔记 (By Alex0510)
-ydybj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/ydybj.js,type=http-response,pattern=https://note.youdao.com/yws/(mapi/payment|api/self)
-
-# > 美颜相机一次性解锁内购（by黑黑酱）
-myxj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/myxj.js,type=http-response,pattern=^https:\/\/api\.meiyan\.com\/iap\/verify\.json
-
-# > 026 科技窝（20201228）
-https://www.benbenfx.xyz/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 025 森茂小苑 （20201219）
-https://[a-z]+.smkj33.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 024 电视盒子君（20201218）
-https://tvapp.guilaile.cn/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 023 公子黑科技（20201218）
-https://gz.gongzijx.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 022 世颜说 （20201217）
-https://d.syshhc.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 021 搞机师兄（20201216）
-https://gjsx.vip/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 020 火箭软件库（20201216）
-https://jt.jxjt888.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 019 天书乱谈（20201215）
-https://[a-z]+.tslt.xyz/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 018 老胡群英会（20201215）
-https://g.syshhc.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 017 天泽百宝箱（20201215）
-https://c.jxjt888.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 016 老鬼黑科技（20201215）
-https://www.laoguikeji.cn/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 015 黑科技软件源（20201215）
-https://qj.bpojie.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 014 天书X乱谈（20201215）
-https://b.tslt.xyz/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 013 图层黑科技（20201215）
-https://m.xgjyouhui.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 012 free 黑科技（20201215）
-https://www.freeheikeji.cn/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 011 小纸箱助手（20201215）
-https://xcx.xianbaow.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 010 扎比科技资源箱 弹框显示内容（20201214）
-https://jabi.coding.net/p/xcx/d/xcx/git/raw/master/jabikj.json url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/jabi.js
-
-# > 009 AppleAndroid 弹框显示内容（20201214）
-https://iosoi.cn/wp-json/wp/v2/posts/\d+ url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-# > 辅助去除页面嵌入式式卡片广告（20201214）
-https://iosoi.cn/wp-content/plugins url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 008 森茂雅苑 （20201027）
-https://d.smkj33.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 005-007 酸鸡汤,老爷花苑,御花园（20201214）
-https://[a-z]+.ddly666.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 004 黑科技软件（20200901）
-^https:\/\/hkj178.com/wp-json/mp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-# > 辅助去除页面嵌入式式卡片广告（20201214）
-https://hkj178.com/wp-json/mp/v2/advert/wechat url reject-200
-
-# > 003 天泽后花园（20200901）
-^https:\/\/a.jxjt888.top/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 002 小野分享（20201215）
-^https:\/\/lysl2020.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
-
-# > 001 搜罗好货（20200924）
-^https:\/\/www.i3zh.com/wp-json/wp/v2/posts url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/xcx.js
 [MITM]
-hostname = %APPEND% api.m.jd.com, trade-acs.m.taobao.com, mp.weixin.qq.com, *.musical.ly, commerce-i18n-api.faceu.mobi,commerce-api.faceu.mobi, pay.wecut.com, note.youdao.com, api.meiyan.com
+hostname = %APPEND% amdc.m.taobao.com, trade-acs.m.taobao.com, acs.m.taobao.com, api.m.jd.com, ms.jr.jd.com, *.amemv.com, aweme*.snssdk.com, vali.cp31.ott.cibntv.net, mp.weixin.qq.com
