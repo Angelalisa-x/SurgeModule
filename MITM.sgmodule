@@ -1,0 +1,8 @@
+#!name= MITM
+#!desc=最后更新时间 2021-02-03 09:30:08
+#!author=knight
+#!github=https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/MITM.sgmodule
+#!mitm=2
+
+[MITM]
+hostname = weixin110.qq.com, lysl2020.com
