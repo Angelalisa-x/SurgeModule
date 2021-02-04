@@ -1,5 +1,16 @@
-#!name=Task - All in one By Angelalisa
+#!name=Angelalisa Task
+#!desc=Task
+#!system=ios
 
 [Script]
-cron "4 8 * * *" script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/exchangeRate.js, tag=实时货币换算
-cron "0 10 18 * * *" script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/lol.js,tag=英雄联盟排名
+每日一句 = script-path= https://raw.githubusercontent.com/nzw9314/QuantumultX/master/yichahucha/cron_daily.js, timeout=30,type=cron,cronexp=30 7 * * *
+每日一句 = type=cron,cronexp=30 7 * * *,timeout=30,script-path=https://raw.githubusercontent.com/nzw9314/QuantumultX/master/yichahucha/cron_daily.js,script-update-interval=604800
+实时汇率 = script-path= https://raw.githubusercontent.com/Sunert/Scripts/master/Task/exchangeRate.js, timeout=30,type=cron,cronexp=59 9 * * *
+英雄联盟排名 = script-path= https://raw.githubusercontent.com/songyangzz/QuantumultX/master/lol.js, timeout=30,type=cron,cronexp=3 18 * * *
+
+什么值得买_每日签到 = script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_checkin.js,timeout=120,type=cron,cronexp=5 0/12 * * *
+什么值得买_获取cookie = script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_checkin.js,type=http-request,requires-body=true,pattern=^https?:\/\/zhiyou\.smzdm\.com\/user$
+什么值得买_获取账号密码 = script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_checkin.js,type=http-request,requires-body=true,pattern=^https?:\/\/user-api\.smzdm\.com\/user_login\/normal$
+
+[MITM]
+hostname = %APPEND% zhiyou.smzdm.com, user-api.smzdm.com
