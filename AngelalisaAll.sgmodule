@@ -1,48 +1,26 @@
 #!name=All Config By Angelalisa
 #!desc=All Config
 
-# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rewrite/Surge/AllInOne/AllInOne.sgmodule
-# https://raw.githubusercontent.com/mudori/Surge/master/Module/TB_Price.sgmodule
-# https://raw.githubusercontent.com/mudori/Surge/master/Module/JD_Price.sgmodule
-# https://raw.githubusercontent.com/Choler/Surge/master/Module/douyin.sgmodule
-# https://raw.githubusercontent.com/Choler/Surge/master/Module/youtube.sgmodule
-# https://raw.githubusercontent.com/Choler/Surge/master/Module/youku.sgmodule
+# https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/AngelalisaAll.sgmodule
 
 [General]
-# > 优酷 去广告
-force-http-engine-hosts = %APPEND% vali.cp31.ott.cibntv.net
 
 [Rule]
-# > 京东  去启动广告
-URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
-URL-REGEX,^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
-URL-REGEX,^https:\/\/b?dsp-x\.jd\.com\/adx\/,REJECT
-URL-REGEX,^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/base\/na\/m\/adInfo,REJECT
-URL-REGEX,^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/na\/m\/getLoadingPicture,REJECT
-# > 优酷 去广告
-URL-REGEX,^http:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/,REJECT-TINYGIF
-URL-REGEX,^https:\/\/.+?\.mp4\?ccode=0902,REJECT
-URL-REGEX,^https:\/\/.+?\.mp4\?sid=,REJECT
-URL-REGEX,^https:\/\/vali\.cp31\.ott\.cibntv\.net\/youku\/.+?\.mp4\?sid=,REJECT
 
 [URL Rewrite]
-# > 抖音 去广告&水印
-^https://acs\.m\.taobao\.com/gw/mtop\.alicom\.secret\.records\.get/1\.0\?rnd\= - reject
-^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/feed\/ https://aweme.snssdk.com/aweme/v1/feed/ header
-^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/aweme\/post\/ https://aweme.snssdk.com/aweme/v1/aweme/post/ header
-^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/follow\/feed\/ https://aweme.snssdk.com/aweme/v1/follow/feed/ header
-^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/nearby\/feed\/ https://aweme.snssdk.com/aweme/v1/nearby/feed/ header
-^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/search\/item\/ https://aweme.snssdk.com/aweme/v1/search/item/ header
-^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/general\/search\/single\/ https://aweme.snssdk.com/aweme/v1/general/search/single/ header
-^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/hot/search\/video\/list\/ https://aweme.snssdk.com/aweme/v1/hot/search/video/list/ header
 
 [Script]
-微信公众号去广告 = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js,type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad
-# > 抖音 & TikTok Remove Ad & Logo
-douyin_ad = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v1\/(feed|aweme\/post|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list)\/,requires-body=1,max-size=-1,script-path=https://Choler.github.io/Surge/Script/douyin.js
-#taobao
-http-request ^http://.+/amdc/mobileDispatch requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
-http-response ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
+淘票票豆瓣评分=type=http-response, requires-body=1, pattern=^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopshowapi\.getextendshowbyid, script-path=https://raw.githubusercontent.com/Peng-YM/QuanX/master/Rewrites/TaoPiaoPiao/taopiaopiao.jsttp-response ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
+
+jd_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Script/jd_price.js,tag=京东比价,type=http-response,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig)
+
+tbopener.js = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,script-path=https://raw.githubusercontent.com/xwxiewu/Surge/master/Script/weixin110.js
+
+WeChat.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,script-path=https://raw.githubusercontent.com/xwxiewu/Surge/master/Script/WeChat/Wechat.js
+
+WeChatAD.js = type=http-response,requires-body=1,max-size=-1,pattern=^https://mp\.weixin\.qq\.com/mp/getappmsgad,script-path=https://raw.githubusercontent.com/xwxiewu/Surge/master/Script/WeChat/WeChatAD.js
+
+douyu.js = type=http-response,pattern=^https?:\/\/rtbapi\.douyucdn\.cn,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Liquor030/Sub_Ruleset/master/Script/douyu.js,script-update-interval=0
 
 [MITM]
-hostname = %APPEND% amdc.m.taobao.com, trade-acs.m.taobao.com, acs.m.taobao.com, api.m.jd.com, ms.jr.jd.com, *.amemv.com, aweme*.snssdk.com, vali.cp31.ott.cibntv.net, mp.weixin.qq.com
+hostname = guide-acs.m.taobao.com, weixin110.qq.com
