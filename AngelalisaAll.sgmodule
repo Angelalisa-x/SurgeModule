@@ -4,17 +4,33 @@
 # https://raw.githubusercontent.com/Angelalisa-x/SurgeModule/master/AngelalisaAll.sgmodule
 
 [General]
+force-http-engine-hosts = %APPEND% *.cp31.ott.cibntv.net,220.112*,211.162*,124.193*,124.14*,119.79*
 
 [Rule]
+DOMAIN,video-ad.sm.cn,REJECT-DROP
+DOMAIN,api.cupid.dns.iqiyi.com,REJECT
+DOMAIN-SUFFIX,cupid.iqiyi.com,REJECT
 
 [URL Rewrite]
+# > 京东注销会员跳转
+^(https://shopmember.m.jd.com/)(shopcard/\?)(venderId=[0-9]+).* $1member/memberCloseAccount?$3 302
+^https:\/\/shopmember\.m\.jd\.com\/shopcard\/\?(venderId=[0-9]+).* https:\/\/shopmember\.m\.jd\.com\/member\/memberCloseAccount\?$1 302
+
+http://.+\.cp31\.ott\.cibntv\.net - reject
+http://(\d{1,3}\.){3}\d{1,3}/(variety|vlive\.qqvideo)\.tc\.qq\.com/ - reject
+
+[Header Rewrite]
+# 知乎（部分替换为手机百度 Quark 的 User-Agent）
+^https?:\/\/www\.zhihu\.com header-replace User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/16C50 Quark/604.1 T7/10.3 SearchCraft/2.6.3 (Baidu; P1 8.0.0)
 
 [Script]
 淘票票豆瓣评分=type=http-response, requires-body=1, pattern=^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopshowapi\.getextendshowbyid, script-path=https://raw.githubusercontent.com/Peng-YM/QuanX/master/Rewrites/TaoPiaoPiao/taopiaopiao.jsttp-response ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
 
 jd_price.js = requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Script/jd_price.js,tag=京东比价,type=http-response,pattern=^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig)
 
-tbopener.js = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,script-path=https://raw.githubusercontent.com/xwxiewu/Surge/master/Script/weixin110.js
+tb_price.js = type=http-request,requires-body=1,pattern=^http://.+/amdc/mobileDispatch,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price_lite.js
+
+tb_price.js = type=http-response,requires-body=1,pattern=^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price_lite.js
 
 WeChat.js = type=http-response,requires-body=1,max-size=-1,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,script-path=https://raw.githubusercontent.com/xwxiewu/Surge/master/Script/WeChat/Wechat.js
 
@@ -22,5 +38,14 @@ WeChatAD.js = type=http-response,requires-body=1,max-size=-1,pattern=^https://mp
 
 douyu.js = type=http-response,pattern=^https?:\/\/rtbapi\.douyucdn\.cn,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Liquor030/Sub_Ruleset/master/Script/douyu.js,script-update-interval=0
 
+# > 京粉转链
+京粉转链 = type=http-response,pattern=^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBusiness|serverConfig|basicConfig|lite_wareBusiness|pingou_item),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/githubdulong/Script/master/jfConvert.js,use-local-host-item-for-proxy = true
+
+# > 微信屏蔽链接跳转
+微信屏蔽链接跳转 = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,requires-body=1,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js
+
+# 百度（全站替换为手机百度 Quark 的 User-Agent）
+BaiduChangeUA = type=http-request,pattern=^https?:\/\/(?!d\.pcs).*(?<!map)\.baidu\.com,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/asset/BaiduChangeUA.js
+
 [MITM]
-hostname = guide-acs.m.taobao.com, weixin110.qq.com
+hostname = guide-acs.m.taobao.com, weixin110.qq.com, shopmember.m.jd.com
