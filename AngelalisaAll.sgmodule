@@ -13,6 +13,7 @@
 [Rule]
 # 屏蔽HTTP3/QUIC协议
 #AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
+
 URL-REGEX,^https?:\/\/(api.*\.amemv|aweme\.snssdk)\.com\/api\/ad\/,REJECT
 
 [URL Rewrite]
