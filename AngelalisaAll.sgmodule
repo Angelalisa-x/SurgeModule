@@ -8,36 +8,34 @@
 # https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Surge/Module/TunOnly.sgmodule
 
 [General]
-compatibility-mode = 3
+#compatibility-mode = 3
 
 [Rule]
-AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
+# 屏蔽HTTP3/QUIC协议
+#AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
 URL-REGEX,^https?:\/\/(api.*\.amemv|aweme\.snssdk)\.com\/api\/ad\/,REJECT
 
 [URL Rewrite]
 ^https?:\/\/api.*\.amemv\.com\/aweme\/v\d\/ https://aweme.snssdk.com/aweme/v1/ header
 
-
 [Script]
-# > 京粉转链
-京粉转链 = type=http-response,pattern=^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBusiness|serverConfig|basicConfig|lite_wareBusiness|pingou_item),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/githubdulong/Script/master/jfConvert.js,use-local-host-item-for-proxy = true
-
 # > 微信屏蔽链接跳转
 微信屏蔽链接跳转 = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,requires-body=1,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js
 
 # 微信去广告
 http-response ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
 
+#斗鱼去广告
 douyu.js = type=http-response,pattern=^https?:\/\/rtbapi\.douyucdn\.cn,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/xwxiewu/Surge/master/Script/douyu.js,script-update-interval=0
 
 # 微信去订阅文章广告
 Wechat.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js,type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad
 
-#斗鱼去广告
+#抖音去广告
 douyin = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v[12]\/((|follow\/|nearby\/)feed|aweme\/post|hot\/search\/video\/list|mix\/aweme|aweme\/detail)\/\?,requires-body=1,script-path=https://cdn.jsdelivr.net/gh/fgprodigal/Surge-Rule@master/Script/douyin.js
 
 # 京东比价
 http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) requires-body=1,script-path=https://service.2ti.st/QuanX/Script/jd_tb_price/main.js
 
 [MITM]
-hostname = %APPEND% weixin110.qq.com, mp.weixin.qq.com, rtbapi.douyucdn.cn, api*.amemv.com, aweme.snssdk.com, api.m.jd.com, trade-acs.m.taobao.com
+hostname = %APPEND% weixin110.qq.com, mp.weixin.qq.com, rtbapi.douyucdn.cn, api*.amemv.com, aweme.snssdk.com, api.m.jd.com
