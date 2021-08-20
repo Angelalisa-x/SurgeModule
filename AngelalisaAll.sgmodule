@@ -1,20 +1,36 @@
 #!name=All Config By Angelalisa
 #!desc=All Config
 
-# https://raw.githubusercontent.com/jiegto/Surge_config/main/module/block_quic.sgmodule
-# https://raw.githubusercontent.com/jiegto/Surge_config/main/module/price.sgmodule
-# https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Surge/Module/Myjs.sqmodule
-# https://raw.githubusercontent.com/fgprodigal/Surge-Rule/master/Module/douyin.sgmodule
-# https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Surge/Module/TunOnly.sgmodule
+# > https://raw.githubusercontent.com/jiegto/Surge_config/main/module/block_quic.sgmodule
+# > https://raw.githubusercontent.com/jiegto/Surge_config/main/module/price.sgmodule
+# > https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Surge/Module/Myjs.sqmodule
+# > https://raw.githubusercontent.com/fgprodigal/Surge-Rule/master/Module/douyin.sgmodule
+# > https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Surge/Module/TunOnly.sgmodule
+# > https://raw.githubusercontent.com/Maasea/sgmodule/master/KeepAds.sgmodule
 
 [General]
-#compatibility-mode = 3
+# >compatibility-mode = 3
+
+[Map Local]
+https:\/\/www\.hptoon\.com\/hanman\/static\/dist\/ppm\/js\/common(\d)?\.js data="https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Hptoon/Common.js"
+
 
 [Rule]
-# 屏蔽HTTP3/QUIC协议
-#AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
+# > 屏蔽HTTP3/QUIC协议
+AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
 
 URL-REGEX,^https?:\/\/(api.*\.amemv|aweme\.snssdk)\.com\/api\/ad\/,REJECT
+
+URL-REGEX,^https:\/\/api\.gotokeep\.com\/op-engine-webapp\/v1\/ad,REJECT
+URL-REGEX,^https:\/\/api\.gotokeep\.com\/training\/box\/config,REJECT
+URL-REGEX,^https:\/\/api\.gotokeep\.com\/op-engine-webapp\/v1\/ad\/preload$,REJECT
+
+# > 91
+DOMAIN,vthumb.killcovid2021.com,REJECT
+
+# > Ximalaya
+URL-REGEX,^https?:\/\/((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\/(ting|soundPatch|chase_recommend|anchor-sell),REJECT
+URL-REGEX,^https?:\/\/.*\.ximalaya\.com\/(discovery-feed|anchor-sell),REJECT
 
 [URL Rewrite]
 ^https?:\/\/api.*\.amemv\.com\/aweme\/v\d\/ https://aweme.snssdk.com/aweme/v1/ header
@@ -23,20 +39,27 @@ URL-REGEX,^https?:\/\/(api.*\.amemv|aweme\.snssdk)\.com\/api\/ad\/,REJECT
 # > 微信屏蔽链接跳转
 微信屏蔽链接跳转 = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,requires-body=1,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js
 
-# 微信去广告
+# > 微信去广告
 http-response ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
 
-#斗鱼去广告
+# >斗鱼去广告
 douyu.js = type=http-response,pattern=^https?:\/\/rtbapi\.douyucdn\.cn,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/xwxiewu/Surge/master/Script/douyu.js,script-update-interval=0
 
-# 微信去订阅文章广告
+# > 微信去订阅文章广告
 Wechat.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js,type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad
 
-#抖音去广告
+# >抖音去广告
 douyin = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v[12]\/((|follow\/|nearby\/)feed|aweme\/post|hot\/search\/video\/list|mix\/aweme|aweme\/detail)\/\?,requires-body=1,script-path=https://cdn.jsdelivr.net/gh/fgprodigal/Surge-Rule@master/Script/douyin.js
 
-# 京东比价
+# > 京东比价
 http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) requires-body=1,script-path=https://service.2ti.st/QuanX/Script/jd_tb_price/main.js
 
+# > KeepAds
+Tab = type=http-response,pattern=https:\/\/api\.gotokeep\.com\/homepage\/v4\/tab,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/surgeModule/master/Script/Keep/Sections.js
+Bottom = type=http-response,pattern=https:\/\/api\.gotokeep\.com\/config\/v3/basic,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/surgeModule/master/Script/Keep/BottomBar.js
+
+# > youtube
+YouTubeAds = type=http-request,pattern=^https?:\/\/.+?\.googlevideo\.com\/.+&(oad|ctier)=(?!A),script-path=https://choler.github.io/Surge/Script/YouTube.js
+
 [MITM]
-hostname = %APPEND% weixin110.qq.com, mp.weixin.qq.com, rtbapi.douyucdn.cn, api*.amemv.com, aweme.snssdk.com, api.m.jd.com
+hostname = %APPEND% weixin110.qq.com, mp.weixin.qq.com, rtbapi.douyucdn.cn, api*.amemv.com, aweme.snssdk.com, api.m.jd.com, api.gotokeep.com, static2.keepcdn.com, *.ximalaya.com, www.hptoon.com, *.googlevideo.com
